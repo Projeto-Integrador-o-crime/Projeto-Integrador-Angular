@@ -1,0 +1,49 @@
+:host {
+  .main-container {
+    width: 100%;
+    height: 95vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .error-msg {
+      width: 60%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .desc {
+        h1 {
+          font-size: 35px;
+          margin-bottom: 25px;
+          strong {
+            color: var(--primary);
+          }
+        }
+
+        p {
+          color: var(--grey-10);
+          margin-bottom: 7px;
+
+          text-align: left;
+          font-size: 12px;
+          strong {
+            color: var(--black);
+            a {
+              text-decoration: none;
+              color: var(--primary);
+            }
+            &:hover {
+              text-decoration: underline;
+              color: var(--primary);
+            }
+          }
+        }
+      }
+    }
+  }
+}

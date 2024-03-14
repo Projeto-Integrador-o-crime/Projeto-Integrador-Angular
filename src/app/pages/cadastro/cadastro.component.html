@@ -1,0 +1,79 @@
+<div class="main-container">
+  @defer (on viewport) {
+  <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
+    <div class="header">
+      <h1>Cadastre-se<strong>!</strong></h1>
+      <p>Crie uma conta gratis!</p>
+    </div>
+
+    <label class="input">
+      Nome Completo:
+      <input
+        type="text"
+        placeholder="Nome completo..."
+        formControlName="name"
+        (blur)="validateData($event, 'nome')"
+      />
+      @if (errorName !== '') {
+      <p class="error-msg">{{ errorName }}</p>
+      }
+    </label>
+    <label class="input">
+      E-mail:
+      <input
+        type="text"
+        placeholder="Example@example.com"
+        formControlName="email"
+        (blur)="validateData($event, 'email')"
+      />
+      @if (errorEmail !== '') {
+      <p class="error-msg">{{ errorEmail }}</p>
+      }
+    </label>
+    <label class="input">
+      Senha:
+      <input
+        type="password"
+        placeholder="senha..."
+        formControlName="password"
+        (blur)="validateData($event, 'password')"
+      />
+      @if (erroPassword !== '') {
+      <p class="error-msg">{{ erroPassword }}</p>
+      }
+    </label>
+    <label class="input">
+      Confirmar Senha:
+      <input
+        type="password"
+        placeholder="Confirmar senha..."
+        (blur)="validatePassword()"
+        formControlName="repeatPassword"
+      />
+      @if (erroRepeatPassword !== '') {
+      <p class="error-msg">{{ erroRepeatPassword }}</p>
+      }
+    </label>
+
+    <button [disabled]="!profileForm.valid" class="btn-submit">
+      Cadastrar
+    </button>
+
+    <div class="footer">
+      <hr />
+      <p>
+        Já possui um conta?
+        <strong><a [routerLink]="['/login']">Login</a></strong>
+      </p>
+    </div>
+  </form>
+  }@placeholder {
+  <section class="section-loader">
+    <div id="loader"></div>
+  </section>
+  }@error {
+  <section>
+    <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+  </section>
+  }
+</div>

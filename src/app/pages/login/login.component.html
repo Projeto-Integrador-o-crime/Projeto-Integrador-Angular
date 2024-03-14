@@ -1,0 +1,62 @@
+<div class="main-container">
+  @defer (on viewport) {
+  <form [formGroup]="profileForm" (ngSubmit)="submit()"  class="form-cadastro">
+    <div class="header">
+      <h1>Seja bem-vindo de volta<strong>!</strong></h1>
+      <p>Entre com uma conta criada.</p>
+    </div>
+
+    <label class="input">
+      E-mail:
+      <input
+        type="text"
+        placeholder="Example@example.com"
+        formControlName="email"
+        (blur)="validateData($event, 'email')"
+      />
+      @if (errorEmail !== '') {
+      <p class="error-msg">{{ errorEmail }}</p>
+      }
+    </label>
+    <label class="input">
+      Senha:
+      <input
+        type="text"
+        placeholder="senha..."
+        formControlName="password"
+        (blur)="validateData($event, 'senha')"
+      />
+      @if (erroPassword !== '') {
+      <p class="error-msg">{{ erroPassword }}</p>
+      }
+    </label>
+
+    <div class="check-area">
+      <label class="input-check">
+        <input type="checkbox" formControlName="rememberMe"/>
+        <label class="remember-me">Lembrar de mim?</label>
+      </label>
+
+      <a href="#">Redefinir senha</a>
+    </div>
+
+    <button [disabled]="!profileForm.valid" class="btn-submit">Entrar</button>
+
+    <div class="footer">
+      <hr />
+      <p>
+        não possui uma conta?
+        <strong><a [routerLink]="['/cadastro']">Cadastrar-se</a></strong>
+      </p>
+    </div>
+  </form>
+  }@placeholder {
+  <section class="section-loader">
+    <div id="loader"></div>
+  </section>
+  }@error {
+  <section>
+    <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+  </section>
+  }
+</div>
