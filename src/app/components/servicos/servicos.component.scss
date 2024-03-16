@@ -1,0 +1,89 @@
+:host {
+  .header {
+    width: 100%;
+    padding: 70px 150px;
+
+    .container {
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h2 {
+        margin-bottom: 15px;
+
+        font-size: 30px;
+      }
+      .sub-title {
+        margin-bottom: 55px;
+      }
+
+      .card {
+        padding: 30px 30px 10px 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+        h2 {
+          margin-bottom: 30px;
+
+          font-size: 25px;
+          font-weight: bold;
+        }
+
+        .title {
+          font-size: 35px;
+        }
+
+        button {
+          width: 100%;
+          padding: 10px 20px;
+          margin: 10px;
+
+          border: none;
+          border-radius: 7px;
+          font-size: 12px;
+          font-weight: bold;
+          color: var(--white);
+          background: var(--primary);
+
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            background: var(--primary-10);
+          }
+        }
+
+        hr {
+          width: 100%;
+          border: 1px solid var(--black);
+        }
+
+        .desc {
+          width: 100%;
+          padding: 5px;
+
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          flex-direction: column;
+
+          p{
+            i{
+              font-weight: bold;
+              color: var(--green);
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

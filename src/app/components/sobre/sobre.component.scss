@@ -1,0 +1,27 @@
+:host{
+  .header{
+    width: 100%;
+    padding: 70px 150px;
+
+    background: var(--grey);
+
+
+    .container{
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h2 {
+        margin-bottom: 15px;
+
+        font-size: 30px;
+      }
+      .sub-title {
+        margin-bottom: 55px;
+      }
+    }
+  }
+}

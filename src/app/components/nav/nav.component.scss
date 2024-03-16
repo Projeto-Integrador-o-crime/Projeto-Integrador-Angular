@@ -1,0 +1,69 @@
+:host{
+  .header{
+    width: 100%;
+    padding: 15px 150px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    z-index: 2;
+
+    background: var(--black-10);
+
+    a,
+    li{
+      color: var(--white);
+    }
+
+    .title{
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .navegation{
+      margin-bottom: 0;
+
+      display: flex;
+      align-items: center;
+
+      li{
+        list-style: none;
+
+        .nav-system{
+          opacity: 69%;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          margin-left: 25px;
+          transition: .2s;
+
+          &:hover{
+            opacity: 100%;
+          }
+        }
+      }
+
+      .btn-login{
+        padding: 5px 15px;
+        margin-left: 30px;
+
+        font-size: 12px;
+        opacity: 69%;
+        border: 1px solid var(--white);
+        border-radius: 5px;
+
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover{
+          color: var(--black);
+
+          opacity: 100%;
+          background: var(--white);
+        }
+      }
+    }
+  }
+}

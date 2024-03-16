@@ -9,6 +9,7 @@ import { DebuggerComponent } from './pages/debugger/debugger.component';
 export const routes: Routes = [
   {
     path: '',
+    title: 'Página inicial',
     component: HomeComponent,
   },
   {
