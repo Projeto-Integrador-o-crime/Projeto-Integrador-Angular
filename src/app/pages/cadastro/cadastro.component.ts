@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,7 +10,16 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
+  // API
+  #apiService = inject(ApiService);
+
+  ngOnInit(): void {
+    this.#apiService.httpListUser$().subscribe((res) => {
+      // console.log(res);
+    });
+  }
+
   #fb = inject(FormBuilder);
 
   public errorName: string = '';
@@ -80,11 +90,15 @@ export class CadastroComponent {
   // função para enviar dados
   public submit() {
     if (this.profileForm.valid) {
-      console.log(
-        `Nome: ${this.profileForm.get('name')?.value}`,
-        `email: ${this.profileForm.get('email')?.value}`,
-        `Senha: ${this.profileForm.get('password')?.value}`,
-      );
+      const body = {
+        name: this.profileForm.get('name')?.value,
+        email: this.profileForm.get('email')?.value,
+        password: this.profileForm.get('password')?.value,
+      };
+
+      this.#apiService.httpPostUser$(body).subscribe((res) => {
+        // console.log(res);
+      });
     }
   }
 }
