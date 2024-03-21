@@ -67,9 +67,13 @@
                             font-size: 16px;
                             padding: 5px 20px;
                             width: 100%;
+                            color: var(--hex);
                             &:hover{
                                 background: var(--grey);
                             }
+                        }
+                        p{
+                            margin-top: 15px;
                         }
 
                     }
