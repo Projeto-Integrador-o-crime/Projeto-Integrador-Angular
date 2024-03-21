@@ -1,6 +1,36 @@
-<div class="container">
+<div class="container-main">
   <div class="nav">
-    
+    <div class="title">
+      <h1>Dashboard</h1>
+    </div>
+    <hr>
+    <h2>teste 1</h2>
+    <hr>
+    <p>addons</p>
+
+    <mat-accordion class="conteiner-element">
+      <mat-expansion-panel class="background" hideToggle>
+        <mat-expansion-panel-header class="conteiner-element">
+          <mat-panel-title class="title">
+            <i class="bi bi-folder-fill icon"></i> 
+            pages
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+        <div class="elements">
+          <p>LOGIN SCREENS:</p>
+          <a [routerLink]="['/login']">Login</a>
+          <a [routerLink]="['/cadastro']">cadastro</a>
+          <p>OTHER PAGES:</p>
+          <a [routerLink]="['/404']">404 Error</a>
+        </div>
+      </mat-expansion-panel>
+
+
+    </mat-accordion>
+
   </div>
-  <div class="header"></div>
+  <div class="header">
+    <h1>foi oq ela disse</h1>
+  </div>
 </div>
