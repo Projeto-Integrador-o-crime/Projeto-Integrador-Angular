@@ -1,21 +1,17 @@
 import { Routes } from '@angular/router';
 
+// Componentes
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { DebuggerComponent } from './pages/debugger/debugger.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
     title: 'Página inicial',
     component: HomeComponent,
-  },
-  {
-    path: 'debugger',
-    title: 'debuuger-room',
-    component: DebuggerComponent,
   },
   {
     path: 'cadastro',
@@ -26,6 +22,11 @@ export const routes: Routes = [
     path: 'login',
     title: 'Login',
     component: LoginComponent,
+  },
+  {
+    path: 'dashboard',
+    title: 'Dashboard',
+    component: DashboardComponent,
   },
   {
     path: '**',
