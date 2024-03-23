@@ -3,34 +3,68 @@
     <div class="title">
       <h1>Dashboard</h1>
     </div>
-    <hr>
-    <h2>teste 1</h2>
-    <hr>
-    <p>addons</p>
+    <hr />
+    <div class="table-element" (click)="openDashboard()">
+      <i class="bi bi-speedometer"></i>
+      <label class="icon-select"><strong>Dashboard</strong></label>
+    </div>
+    <hr />
+    <p class="subtitle">ADDONS</p>
 
     <mat-accordion class="conteiner-element">
       <mat-expansion-panel class="background" hideToggle>
         <mat-expansion-panel-header class="conteiner-element">
           <mat-panel-title class="title">
-            <i class="bi bi-folder-fill icon"></i> 
-            pages
+            <i class="icon-select bi bi-folder-fill icon"></i>
+            <label class="icon-select">pages</label>
           </mat-panel-title>
-
         </mat-expansion-panel-header>
         <div class="elements">
           <p>LOGIN SCREENS:</p>
           <a [routerLink]="['/login']">Login</a>
           <a [routerLink]="['/cadastro']">cadastro</a>
+
+          <hr />
+
           <p>OTHER PAGES:</p>
           <a [routerLink]="['/404']">404 Error</a>
         </div>
       </mat-expansion-panel>
-
-
     </mat-accordion>
-
+    <div class="table-element" (click)="openTable()">
+      <i class="icon-select bi bi-table"></i>
+      <label class="icon-select"><strong>Tables</strong></label>
+    </div>
   </div>
-  <div class="header">
-    <h1>foi oq ela disse</h1>
+
+  <div class="main-body">
+    <div class="header">
+      <div class="left-container">
+        <div class="input">
+          <input type="text" placeholder="search for..."/>
+          <i class="icon bi bi-search"></i>
+        </div>
+      </div>
+      <div class="right-container">
+        <i class="icon bi bi-envelope-fill"></i>
+        <i class="icon bi bi-bell-fill"></i>
+
+        <hr>
+
+        <a [routerLink]="['/login']" class="btn-login">
+          <i class="icon-user bi bi-person-fill"></i>
+        </a>
+      </div>
+    </div>
+
+    @if (isTableOpen) {
+    <div class="container-main-table">
+      <app-table />
+    </div>
+    } @if (isDashboardOpen) {
+    <div class="container-main-table">
+      <app-dashboard-main />
+    </div>
+    }
   </div>
 </div>
