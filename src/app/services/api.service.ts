@@ -1,5 +1,5 @@
 import { IUser } from '../interfaces/iuser';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
@@ -20,5 +20,11 @@ export class ApiService {
   // Cadastrar usuário
   public httpPostUser$(body: any): Observable<IUser[]> {
     return this.#http.post<IUser[]>(this.#url() + `/user`, body);
+  }
+
+  // Deletar usuário
+  public httpDeleteUser$(id: string): Observable<void> {
+    const options = id ? { params: new HttpParams().set('id', id) } : {};
+    return this.#http.delete<void>(`${this.#url()}/user`, options);
   }
 }

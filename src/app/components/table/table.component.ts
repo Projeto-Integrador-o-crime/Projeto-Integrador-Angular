@@ -13,16 +13,28 @@ import { ITableUsers } from '../../interfaces/ITableUsers';
   styleUrl: './table.component.scss',
 })
 export class TableComponent {
-  displayedColumns: string[] = ['position', 'name', 'email', 'password'];
+  displayedColumns: string[] = [
+    'position',
+    'id',
+    'name',
+    'email',
+    'password',
+    'actions',
+  ];
   dataSource = new MatTableDataSource<ITableUsers>();
 
   // API injeção
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.apiService.httpListUser$().subscribe((res) => {
       this.dataSource.data = res.map((element, index) => ({
         position: index + 1,
+        id: element.id,
         name: element.name,
         email: element.email,
         password: element.password,
@@ -33,5 +45,11 @@ export class TableComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  deleteUser(id: string) {
+    this.apiService.httpDeleteUser$(id).subscribe((res) => {
+      this.loadData();
+    });
   }
 }
