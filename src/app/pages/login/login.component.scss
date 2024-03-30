@@ -134,4 +134,25 @@
       }
     }
   }
+
+  .error-msg {
+    margin: 3px 3px 0;
+  }
+
+  .error-msg-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .error-msg {
+      margin: 3px 0;
+      font-size: 12px;
+      font-weight: bold;
+
+      color: red;
+      text-decoration: underline;
+    }
+  }
 }

@@ -25,4 +25,12 @@
   .top {
     border-bottom: 2px solid var(--primary);
   }
+
+  .icon-delete{
+    font-size: 22px;
+
+    &:hover{
+      color: var(--red);
+    }
+  }
 }

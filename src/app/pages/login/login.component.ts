@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  // API injeção
+  constructor(private apiService: ApiService) {}
+
+  public getLoginError = this.apiService.getLoginError;
+
   #fb = inject(FormBuilder);
 
   public errorEmail: string = '';
@@ -56,11 +62,14 @@ export class LoginComponent {
   // função para enviar dados
   public submit() {
     if (this.profileForm.valid) {
-      console.log(
-        `email: ${this.profileForm.get('email')?.value}`,
-        `Senha: ${this.profileForm.get('password')?.value}`,
-        `Lembre-de-mim: ${this.profileForm.get('rememberMe')?.value}`
-      );
+      const body = {
+        email: this.profileForm.get('email')?.value,
+        password: this.profileForm.get('password')?.value,
+      };
+
+      this.apiService.httpLoginUser$(body).subscribe((res) => {
+        console.log(res);
+      });
     }
   }
 }

@@ -8,13 +8,19 @@
 @defer (on viewport) {
 <mat-form-field>
   <mat-label>Filter</mat-label>
-  <input class="input-filter" matInput (keyup)="applyFilter($event)" placeholder="Nome..." #input />
+  <input
+    class="input-filter"
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Parametro..."
+    #input
+  />
 </mat-form-field>
 
 <div class="main-table">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef class="top">position</th>
+      <th mat-header-cell *matHeaderCellDef class="top">.INDEX</th>
       <td mat-cell *matCellDef="let element">
         <strong>{{ element.position }}</strong>
       </td>
@@ -40,10 +46,14 @@
       <td mat-cell *matCellDef="let element">{{ element.password }}</td>
     </ng-container>
 
-
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef class="top">Ações</th>
-      <td mat-cell *matCellDef="let element"><i class="bi bi-x-circle" (click)="deleteUser(element.id)"></i></td>
+      <td mat-cell *matCellDef="let element">
+        <i
+          class="bi bi-x-circle icon-delete"
+          (click)="deleteUser(element.id)"
+        ></i>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

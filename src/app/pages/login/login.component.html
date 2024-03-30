@@ -1,6 +1,6 @@
 <div class="main-container">
   @defer (on viewport) {
-  <form [formGroup]="profileForm" (ngSubmit)="submit()"  class="form-cadastro">
+  <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
     <div class="header">
       <h1>Seja bem-vindo de volta<strong>!</strong></h1>
       <p>Entre com uma conta criada.</p>
@@ -21,7 +21,7 @@
     <label class="input">
       Senha:
       <input
-        type="text"
+        type="password"
         placeholder="senha..."
         formControlName="password"
         (blur)="validateData($event, 'senha')"
@@ -33,7 +33,7 @@
 
     <div class="check-area">
       <label class="input-check">
-        <input type="checkbox" formControlName="rememberMe"/>
+        <input type="checkbox" formControlName="rememberMe" />
         <label class="remember-me">Lembrar de mim?</label>
       </label>
 
@@ -41,6 +41,11 @@
     </div>
 
     <button [disabled]="!profileForm.valid" class="btn-submit">Entrar</button>
+    @if (getLoginError(); as error) {
+    <div class="error-msg-container">
+      <p class="error-msg">{{ error }}</p>
+    </div>
+    }
 
     <div class="footer">
       <hr />

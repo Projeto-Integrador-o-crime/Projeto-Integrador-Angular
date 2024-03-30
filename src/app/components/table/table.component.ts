@@ -5,6 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApiService } from '../../services/api.service';
 import { ITableUsers } from '../../interfaces/ITableUsers';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -48,8 +50,20 @@ export class TableComponent {
   }
 
   deleteUser(id: string) {
-    this.apiService.httpDeleteUser$(id).subscribe((res) => {
-      this.loadData();
+    Swal.fire({
+      title: 'Tem certeza disso?',
+      text: "Se um usuário for removido, os registros associados serão permanentemente excluídos!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#0353a4',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, deletar usuário!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.apiService.httpDeleteUser$(id).subscribe((res) => {
+          this.loadData();
+        });
+      }
     });
   }
 }
