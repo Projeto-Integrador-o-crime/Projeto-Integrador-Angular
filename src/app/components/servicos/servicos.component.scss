@@ -16,6 +16,18 @@
 
         font-size: 30px;
       }
+      span {
+        color: var(--primary);
+        font-weight: bold;
+      }
+      .descount {
+        color: var(--red);
+        text-decoration: line-through;
+        font-weight: bold;
+      }
+      .sub-title-descount {
+        margin-bottom: 10px;
+      }
       .sub-title {
         margin-bottom: 55px;
       }
@@ -29,16 +41,28 @@
         flex-direction: column;
 
         box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transition: .2s;
 
+        .insta-title {
+          background: linear-gradient(
+            to right,
+            #833AB4,
+            #FD1D1D,
+            #FCB045,
+          );
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+        }
         h2 {
           margin-bottom: 30px;
 
-          font-size: 25px;
+          font-size: 30px;
           font-weight: bold;
         }
 
         .title {
-          font-size: 35px;
+          font-size: 40px;
+          font-weight: bold;
         }
 
         button {
@@ -75,13 +99,40 @@
           align-items: flex-start;
           flex-direction: column;
 
-          p{
-            i{
+          p {
+            i {
               font-weight: bold;
               color: var(--green);
               margin-right: 5px;
             }
           }
+        }
+
+        &:hover{
+          border: 1px solid var(--primary-50);
+        }
+      }
+      .card-recomended{
+        position: relative;
+
+        &::after{
+          content: 'RECOMENDADO!';
+          position: absolute;
+          top: -15px;
+          right: 10px;
+          width: 110px;
+          height: 30px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          background: var(--primary);
+          border-radius: 7px;
+
+          font-size: 12px;
+          font-weight: bold;
+          color: var(--white);
         }
       }
     }

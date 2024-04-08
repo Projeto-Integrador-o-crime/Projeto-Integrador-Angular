@@ -10,15 +10,9 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent{
   // API
   #apiService = inject(ApiService);
-
-  ngOnInit(): void {
-    this.#apiService.httpListUser$().subscribe((res) => {
-      // console.log(res);
-    });
-  }
 
   #fb = inject(FormBuilder);
 
@@ -95,10 +89,6 @@ export class CadastroComponent implements OnInit {
         email: this.profileForm.get('email')?.value,
         password: this.profileForm.get('password')?.value,
       };
-
-      this.#apiService.httpPostUser$(body).subscribe((res) => {
-        // console.log(res);
-      });
     }
   }
 }

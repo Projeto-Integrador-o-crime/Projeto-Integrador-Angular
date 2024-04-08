@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavComponent } from '../../components/nav/nav.component';
-import { HeaderComponent } from '../../components/header/header.component';
 import { ServicosComponent } from '../../components/servicos/servicos.component';
 import { SobreComponent } from '../../components/sobre/sobre.component';
+import { CarouselTopComponent } from '../../components/carousel-top/carousel-top.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { SobreComponent } from '../../components/sobre/sobre.component';
   imports: [
     RouterLink,
     NavComponent,
-    HeaderComponent,
+    CarouselTopComponent,
     ServicosComponent,
     SobreComponent,
   ],

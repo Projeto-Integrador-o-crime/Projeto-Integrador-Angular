@@ -1,6 +1,7 @@
 <div class="main-container">
   @defer (on viewport) {
   <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
+    <a [routerLink]="['']"><i class="bi bi-x-lg close"></i></a>
     <div class="header">
       <h1>Seja bem-vindo de volta<strong>!</strong></h1>
       <p>Entre com uma conta criada.</p>
