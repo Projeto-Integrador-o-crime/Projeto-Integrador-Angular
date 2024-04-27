@@ -12,7 +12,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class CadastroComponent{
   // API
-  #apiService = inject(ApiService);
+  constructor(private apiService: ApiService) {}
 
   #fb = inject(FormBuilder);
 
@@ -89,6 +89,9 @@ export class CadastroComponent{
         email: this.profileForm.get('email')?.value,
         password: this.profileForm.get('password')?.value,
       };
+
+      this.apiService.httpPostUser$(body).subscribe((res) => {
+      });
     }
   }
 }
