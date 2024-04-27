@@ -38,17 +38,21 @@
       .header {
         opacity: 89%;
         margin-bottom: 25px;
+
         h1 {
           font-weight: bold;
           margin-bottom: 3px;
+
           strong {
             color: var(--primary);
           }
         }
+
         p {
           opacity: 69%;
         }
       }
+
       .input {
         width: 100%;
         margin-bottom: 15px;
@@ -95,6 +99,23 @@
         }
       }
 
+      .error-msg-container {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .error-msg {
+          margin: 3px 0;
+          font-size: 12px;
+          font-weight: bold;
+
+          color: red;
+          text-decoration: underline;
+        }
+      }
+
       .footer {
         width: 100%;
         display: flex;
@@ -106,6 +127,7 @@
           width: 70%;
           background-color: black;
         }
+
         p {
           margin-top: 15px;
 

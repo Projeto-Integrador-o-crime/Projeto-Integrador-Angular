@@ -4,26 +4,25 @@ import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-redefinir-senha',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './redefinir-senha.component.html',
+  styleUrl: './redefinir-senha.component.scss'
 })
-export class LoginComponent {
+export class RedefinirSenhaComponent {
   // API injeção
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
   #fb = inject(FormBuilder);
-  
+
   public errorEmail: string = '';
   public erroPassword: string = '';
-  public getLoginError = this.apiService.getLoginError;
+  public getRedefinirSenhaError = this.apiService.getRedefinirSenhaError;
 
   // forumulario
   public profileForm = this.#fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
-    rememberMe: [false],
+    newPassword: ['', [Validators.required]],
   });
 
   // Tratamento de erro Front
@@ -34,7 +33,7 @@ export class LoginComponent {
           this.errorEmail = 'Preencher o campo ' + name;
           break;
 
-        case 'senha':
+        case 'nova senha':
           this.erroPassword = 'Preencher o campo ' + name;
           break;
 
@@ -47,7 +46,7 @@ export class LoginComponent {
           this.errorEmail = '';
           break;
 
-        case 'senha':
+        case 'nova senha':
           this.erroPassword = '';
           break;
 
@@ -62,10 +61,10 @@ export class LoginComponent {
     if (this.profileForm.valid) {
       const body = {
         email: this.profileForm.get('email')?.value,
-        password: this.profileForm.get('password')?.value,
+        newPassword: this.profileForm.get('newPassword')?.value,
       };
 
-      this.apiService.httpLoginUser$(body).subscribe((res) => {
+      this.apiService.httpRedefinirSenhaUser$(body).subscribe((res) => {
       });
     }
   }

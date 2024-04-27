@@ -13,13 +13,13 @@ import { ApiService } from '../../services/api.service';
 export class CadastroComponent{
   // API
   constructor(private apiService: ApiService) {}
-
   #fb = inject(FormBuilder);
 
   public errorName: string = '';
   public errorEmail: string = '';
   public erroPassword: string = '';
   public erroRepeatPassword: string = '';
+  public getCadastroError = this.apiService.getCadastroError;
 
   // forumulario
   public profileForm = this.#fb.group({

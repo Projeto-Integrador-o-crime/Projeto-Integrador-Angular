@@ -9,48 +9,31 @@
 
     <label class="input">
       Nome Completo:
-      <input
-        type="text"
-        placeholder="Nome completo..."
-        formControlName="name"
-        (blur)="validateData($event, 'nome')"
-      />
+      <input type="text" placeholder="Nome completo..." formControlName="name" (blur)="validateData($event, 'nome')" />
       @if (errorName !== '') {
       <p class="error-msg">{{ errorName }}</p>
       }
     </label>
     <label class="input">
       E-mail:
-      <input
-        type="text"
-        placeholder="Example@example.com"
-        formControlName="email"
-        (blur)="validateData($event, 'email')"
-      />
+      <input type="text" placeholder="Example@example.com" formControlName="email"
+        (blur)="validateData($event, 'email')" />
       @if (errorEmail !== '') {
       <p class="error-msg">{{ errorEmail }}</p>
       }
     </label>
     <label class="input">
       Senha:
-      <input
-        type="password"
-        placeholder="senha..."
-        formControlName="password"
-        (blur)="validateData($event, 'password')"
-      />
+      <input type="password" placeholder="senha..." formControlName="password"
+        (blur)="validateData($event, 'password')" />
       @if (erroPassword !== '') {
       <p class="error-msg">{{ erroPassword }}</p>
       }
     </label>
     <label class="input">
       Confirmar Senha:
-      <input
-        type="password"
-        placeholder="Confirmar senha..."
-        (blur)="validatePassword()"
-        formControlName="repeatPassword"
-      />
+      <input type="password" placeholder="Confirmar senha..." (blur)="validatePassword()"
+        formControlName="repeatPassword" />
       @if (erroRepeatPassword !== '') {
       <p class="error-msg">{{ erroRepeatPassword }}</p>
       }
@@ -59,6 +42,11 @@
     <button [disabled]="!profileForm.valid" class="btn-submit">
       Cadastrar-se
     </button>
+    @if (getCadastroError(); as error) {
+    <div class="error-msg-container">
+      <p class="error-msg">{{ error }}</p>
+    </div>
+    }
 
     <div class="footer">
       <hr />

@@ -38,7 +38,7 @@
         <label class="remember-me">Lembrar de mim?</label>
       </label>
 
-      <a href="#">Redefinir senha</a>
+      <a [routerLink]="['/reset-password']">Redefinir senha</a>
     </div>
 
     <button [disabled]="!profileForm.valid" class="btn-submit">Entrar</button>

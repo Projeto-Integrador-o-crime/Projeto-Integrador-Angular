@@ -1,0 +1,60 @@
+<div class="main-container">
+    @defer (on viewport) {
+    <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
+      <a [routerLink]="['']"><i class="bi bi-x-lg close"></i></a>
+      <div class="header">
+        <h1><i class="bi bi-envelope-check icon"></i> Vamos redefinir sua senha<strong>?</strong></h1>
+        <p>Redefina sua senha com seu email cadastrado.</p>
+      </div>
+  
+      <label class="input">
+        E-mail:
+        <input
+          type="text"
+          placeholder="Example@example.com"
+          formControlName="email"
+          (blur)="validateData($event, 'email')"
+        />
+        @if (errorEmail !== '') {
+        <p class="error-msg">{{ errorEmail }}</p>
+        }
+      </label>
+      <label class="input">
+        Nova senha:
+        <input
+          type="password"
+          placeholder="nova-senha..."
+          formControlName="newPassword"
+          (blur)="validateData($event, 'nova senha')"
+        />
+        @if (erroPassword !== '') {
+        <p class="error-msg">{{ erroPassword }}</p>
+        }
+      </label>
+      
+      <button [disabled]="!profileForm.valid" class="btn-submit">Redefinir senha</button>
+      @if (getRedefinirSenhaError(); as error) {
+      <div class="error-msg-container">
+        <p class="error-msg">{{ error }}</p>
+      </div>
+      }
+  
+      <div class="footer">
+        <hr />
+        <p>
+          lembrou sua senha?
+          <strong><a [routerLink]="['/cadastro']">Login</a></strong>
+        </p>
+      </div>
+    </form>
+    }@placeholder {
+    <section class="section-loader">
+      <div id="loader"></div>
+    </section>
+    }@error {
+    <section>
+      <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+    </section>
+    }
+  </div>
+  
