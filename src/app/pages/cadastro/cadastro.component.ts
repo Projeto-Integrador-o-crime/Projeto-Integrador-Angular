@@ -15,6 +15,7 @@ export class CadastroComponent{
   constructor(private apiService: ApiService) {}
   #fb = inject(FormBuilder);
 
+  public isRegistered: boolean = false;
   public errorName: string = '';
   public errorEmail: string = '';
   public erroPassword: string = '';
@@ -83,14 +84,18 @@ export class CadastroComponent{
 
   // função para enviar dados
   public submit() {
+    this.isRegistered = false;
+
     if (this.profileForm.valid) {
       const body = {
         name: this.profileForm.get('name')?.value,
-        email: this.profileForm.get('email')?.value,
+        email: this.profileForm.get('email')?.value?.toLocaleLowerCase(),
         password: this.profileForm.get('password')?.value,
       };
 
       this.apiService.httpPostUser$(body).subscribe((res) => {
+        this.isRegistered = true;
+        console.log(this.isRegistered)
       });
     }
   }

@@ -47,6 +47,11 @@
       <p class="error-msg">{{ error }}</p>
     </div>
     }
+    @if (isRegistered) {
+    <div class="error-msg-container">
+      <p class="not-error-msg">Cadastrado com Sucesso!</p>
+    </div>
+    }
 
     <div class="footer">
       <hr />

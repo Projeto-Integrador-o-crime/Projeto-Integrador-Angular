@@ -12,9 +12,10 @@ import { ApiService } from '../../services/api.service';
 })
 export class LoginComponent {
   // API injeção
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
   #fb = inject(FormBuilder);
-  
+
+  public isLogged: boolean = false;
   public errorEmail: string = '';
   public erroPassword: string = '';
   public getLoginError = this.apiService.getLoginError;
@@ -59,13 +60,16 @@ export class LoginComponent {
 
   // função para enviar dados
   public submit() {
+    this.isLogged = false;
+
     if (this.profileForm.valid) {
       const body = {
-        email: this.profileForm.get('email')?.value,
+        email: this.profileForm.get('email')?.value?.toLocaleLowerCase(),
         password: this.profileForm.get('password')?.value,
       };
 
       this.apiService.httpLoginUser$(body).subscribe((res) => {
+        this.isLogged = true;
       });
     }
   }

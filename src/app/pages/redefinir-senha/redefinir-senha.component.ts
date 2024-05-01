@@ -15,6 +15,7 @@ export class RedefinirSenhaComponent {
   constructor(private apiService: ApiService) { }
   #fb = inject(FormBuilder);
 
+  public isPasswordReseted: boolean = false;
   public errorEmail: string = '';
   public erroPassword: string = '';
   public getRedefinirSenhaError = this.apiService.getRedefinirSenhaError;
@@ -58,13 +59,16 @@ export class RedefinirSenhaComponent {
 
   // função para enviar dados
   public submit() {
+    this.isPasswordReseted = false;
+
     if (this.profileForm.valid) {
       const body = {
-        email: this.profileForm.get('email')?.value,
+        email: this.profileForm.get('email')?.value?.toLocaleLowerCase(),
         newPassword: this.profileForm.get('newPassword')?.value,
       };
 
       this.apiService.httpRedefinirSenhaUser$(body).subscribe((res) => {
+        this.isPasswordReseted = true;
       });
     }
   }

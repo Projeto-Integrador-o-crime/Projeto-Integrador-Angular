@@ -168,5 +168,13 @@
       color: red;
       text-decoration: underline;
     }
+    .not-error-msg {
+      margin: 3px 0;
+      font-size: 12px;
+      font-weight: bold;
+
+      color: var(--green);
+      text-decoration: underline;
+    }
   }
 }
