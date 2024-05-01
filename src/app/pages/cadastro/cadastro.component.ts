@@ -95,7 +95,6 @@ export class CadastroComponent{
 
       this.apiService.httpPostUser$(body).subscribe((res) => {
         this.isRegistered = true;
-        console.log(this.isRegistered)
       });
     }
   }

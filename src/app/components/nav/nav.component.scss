@@ -1,5 +1,5 @@
-:host{
-  .header{
+:host {
+  .header {
     width: 100%;
     padding: 15px 150px;
 
@@ -14,42 +14,42 @@
     background: var(--black-10);
 
     a,
-    li{
+    li {
       color: var(--white);
     }
 
-    .title{
+    .title {
       font-size: 20px;
       font-weight: bold;
     }
 
-    .navegation{
+    .navegation {
       margin-bottom: 0;
 
       display: flex;
       align-items: center;
 
-      li{
+      li {
         list-style: none;
 
         .nav-system,
-        .nav-system-news{
+        .nav-system-news {
           opacity: 69%;
           font-family: 'Montserrat', sans-serif;
           font-size: 12px;
           margin-left: 25px;
           transition: .2s;
 
-          &:hover{
+          &:hover {
             opacity: 100%;
           }
         }
 
-        .nav-system-news{
+        .nav-system-news {
           position: relative;
           color: var(--primary-50);
 
-          &::after{
+          &::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -61,7 +61,7 @@
         }
       }
 
-      .btn-login{
+      .btn-login {
         padding: 5px 15px;
         margin-left: 30px;
 
@@ -73,12 +73,29 @@
         cursor: pointer;
         transition: .2s;
 
-        &:hover{
+        &:hover {
           color: var(--black);
 
           opacity: 100%;
           background: var(--white);
         }
+      }
+    }
+
+    .user-picture {
+      min-width: 40px;
+      min-height: 40px;
+      margin-left: 30px;
+
+      background-image: url(../../../scss/img/pfp.jpg);
+      background-size: cover;
+      border: 2px solid var(--white);
+      border-radius: 100%;
+      opacity: 69%;
+      transition: .2s;
+
+      &:hover {
+        opacity: 100%;
       }
     }
   }

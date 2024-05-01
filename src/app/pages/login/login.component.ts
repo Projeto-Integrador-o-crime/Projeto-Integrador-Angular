@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class LoginComponent {
   // API injeção
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
   #fb = inject(FormBuilder);
 
   public isLogged: boolean = false;
@@ -69,7 +71,12 @@ export class LoginComponent {
       };
 
       this.apiService.httpLoginUser$(body).subscribe((res) => {
-        this.isLogged = true;
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userData', JSON.stringify(res));
+        
+        this.authService.setLoggedIn(true);
+        
+        this.router.navigate(['']);
       });
     }
   }
