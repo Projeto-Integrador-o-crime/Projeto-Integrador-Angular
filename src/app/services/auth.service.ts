@@ -7,38 +7,17 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
-  setLoggedIn(value: boolean): void {
+  public setLoggedIn(value: boolean): void {
     localStorage.setItem('isLoggedIn', value ? 'true' : 'false');
   }
 
-  isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return localStorage.getItem('isLoggedIn') === 'true';
   }
 
-  logout(): void {
+  public logout(): void {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userData');
     this.router.navigate(['/login']);
   }
-
-  // isLoggedIn: boolean = false;
-
-  // constructor(private router: Router) { }
-
-  // // Método para definir o estado de login
-  // public setLoggedIn(value: boolean): void {
-  //   this.isLoggedIn = value;
-  // }
-
-  // // Método para obter o estado de login
-  // public getLoggedIn(): boolean {
-  //   return this.isLoggedIn;
-  // }
-  
-  // // Método para logout do usuário
-  // public logoff(): void {
-  //   this.isLoggedIn = false;
-  //   localStorage.removeItem('userData');
-  //   this.router.navigate(['/login']);
-  // }
 }
