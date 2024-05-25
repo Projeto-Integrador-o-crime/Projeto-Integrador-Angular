@@ -91,6 +91,7 @@ export class CadastroComponent{
         name: this.profileForm.get('name')?.value,
         email: this.profileForm.get('email')?.value?.toLocaleLowerCase(),
         password: this.profileForm.get('password')?.value,
+        description: '',
       };
 
       this.apiService.httpPostUser$(body).subscribe((res) => {
