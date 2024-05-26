@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
@@ -92,6 +92,7 @@ export class CadastroComponent{
         email: this.profileForm.get('email')?.value?.toLocaleLowerCase(),
         password: this.profileForm.get('password')?.value,
         description: '',
+        profilePicture: '',
       };
 
       this.apiService.httpPostUser$(body).subscribe((res) => {

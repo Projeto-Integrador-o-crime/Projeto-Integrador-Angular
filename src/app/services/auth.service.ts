@@ -18,6 +18,8 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userData');
+    localStorage.removeItem('profileImageUrl');
+    localStorage.removeItem('profilePicture');
     this.router.navigate(['/login']);
   }
 }

@@ -10,26 +10,29 @@
     <a [routerLink]="['/login']" class="btn-login">ENTRAR</a>
     }
     @if (isLoggedIn){
-    <button class="user-picture" [matMenuTriggerFor]="menu">
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <i class="bi bi-file-medical" style="font-size: 17px; margin-right: 10px;"></i>
-        <span style="font-size: 12px;">Meus Packs</span>
-      </button>
-      <button mat-menu-item (click)="myProfile()">
-        <i class="bi bi-person" style="font-size: 17px; margin-right: 10px;"></i>
-        <span style="font-size: 12px;">Perfil</span>
-      </button>
-      <button mat-menu-item>
-        <i class="bi bi-gear" style="font-size: 17px; margin-right: 10px;"></i>
-        <span style="font-size: 12px;">Configurações</span>
-      </button>
-      <button mat-menu-item (click)="doLogoff()">
-        <i class="bi bi-power" style="font-size: 17px; margin-right: 10px; color: red;"></i>
-        <span style="font-size: 12px; color: red;">Logoff</span>
-      </button>
-    </mat-menu>
+      @if (imageUrl){
+      <img class="user-picture" [matMenuTriggerFor]="menu" [src]="imageUrl" width="30px" height="30px" loading="eager">
+      } @else{
+      <img class="user-picture" [matMenuTriggerFor]="menu" src="../../../assets/images/pfp.jpg" width="30px" height="30px" loading="eager">
+      }
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <i class="bi bi-file-medical" style="font-size: 17px; margin-right: 10px;"></i>
+          <span style="font-size: 12px;">Meus Packs</span>
+        </button>
+        <button mat-menu-item (click)="myProfile()">
+          <i class="bi bi-person" style="font-size: 17px; margin-right: 10px;"></i>
+          <span style="font-size: 12px;">Perfil</span>
+        </button>
+        <button mat-menu-item>
+          <i class="bi bi-gear" style="font-size: 17px; margin-right: 10px;"></i>
+          <span style="font-size: 12px;">Configurações</span>
+        </button>
+        <button mat-menu-item (click)="doLogoff()">
+          <i class="bi bi-power" style="font-size: 17px; margin-right: 10px; color: red;"></i>
+          <span style="font-size: 12px; color: red;">Logoff</span>
+        </button>
+      </mat-menu>
     }
   </ul>
 </div>

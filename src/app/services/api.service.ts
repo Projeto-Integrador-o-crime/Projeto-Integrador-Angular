@@ -5,6 +5,8 @@ import { environment } from '../../environments/environment';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ILogin } from '../interfaces/ILogin';
 import { ICadastro } from '../interfaces/ICadastro';
+import { IEditUser } from '../interfaces/IEditUser';
+import { IId } from '../interfaces/IId';
 
 @Injectable({
   providedIn: 'root',
@@ -68,6 +70,38 @@ export class ApiService {
     return this.#http.post<ICadastro[]>(this.#url() + `/reset-password`, body).pipe(
       catchError((e: HttpErrorResponse) => {
         this.#setRedefinirSenhaError.set(e.error.message);
+        return throwError(() => e);
+      })
+    )
+  }
+
+  // Editar Perfil usuário
+  #setEditarPerfilError = signal<IEditUser | null>(null);
+  get setEditarPerfilError() {
+    return this.#setEditarPerfilError.asReadonly();
+  }
+  public httpEditUser$(body: any): Observable<IEditUser[]> {
+    this.#setEditarPerfilError.set(null);
+
+    return this.#http.put<IEditUser[]>(this.#url() + `/user/profile`, body).pipe(
+      catchError((e: HttpErrorResponse) => {
+        this.#setEditarPerfilError.set(e.error.message);
+        return throwError(() => e);
+      })
+    )
+  }
+
+  // Listar usuário Por Id (body)
+  #setListByIdError = signal<any | null>(null);
+  get setListByIdError() {
+    return this.#setListByIdError.asReadonly();
+  }
+  public httpListByidUser$(body: any): Observable<any> {
+    this.#setListByIdError.set(null);
+
+    return this.#http.post<any[]>(this.#url() + `/user-data`, body).pipe(
+      catchError((e: HttpErrorResponse) => {
+        this.#setListByIdError.set(e.error.message);
         return throwError(() => e);
       })
     )

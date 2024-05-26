@@ -1,0 +1,137 @@
+:host {
+    .dialog-edit {
+        width: 720px;
+        padding: 30px;
+
+        .main-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+
+            strong {
+                color: var(--primary);
+            }
+        }
+
+        a {
+            height: 0;
+            width: 0;
+            color: var(--black);
+            font-size: 22px;
+
+            position: absolute;
+            top: 30px;
+            right: 0px;
+        }
+
+        .main-content {
+            width: 100%;
+            display: flex;
+            margin-top: 25px;
+
+            .left-area {
+                width: 24%;
+                position: relative;
+
+                .profile-picture {
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    border: 10px solid var(--white);
+                    object-fit: cover;
+                }
+
+                .change-pfp-area {
+                    position: absolute;
+                    bottom: 220px;
+                    left: 105px;
+
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 50%;
+                    border: 5px solid var(--white);
+                    background-color: var(--primary);
+
+                    cursor: pointer;
+                    transition: .1s;
+
+                    &:hover {
+                        background: var(--primary-10);
+                    }
+
+                    .icon {
+                        font-size: 30px;
+                        color: var(--white);
+                    }
+
+                    input[type="file"] {
+                        outline: none;
+                        display: none;
+                    }
+                }
+            }
+
+            .right-area {
+                width: 76%;
+                margin-left: 20px;
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 5px 0 10px 0;
+
+                    input[type="text"] {
+                        width: 50%;
+                    }
+
+                    input,
+                    textarea {
+                        width: 100%;
+                        margin-top: 5px;
+                        padding: 7px 25px 7px 15px;
+
+                        font-size: 14px;
+                        border: 1px solid var(--grey-10);
+                        border-radius: 5px;
+                    }
+
+                    textarea {
+                        margin-bottom: 55px;
+
+                        min-height: 150px;
+                        max-height: 150px;
+                    }
+                }
+
+                .buttons {
+                    display: flex;
+                    justify-content: flex-end;
+
+                    .btn-submit {
+                        width: 35%;
+                        padding: 10px 15px;
+
+                        font-size: 12px;
+                        font-weight: bold;
+                        border: none;
+                        border-radius: 5px;
+                        color: var(--white);
+                        background: var(--primary);
+
+                        cursor: pointer;
+                        transition: .1s;
+
+                        &:hover {
+                            background: var(--primary-10);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

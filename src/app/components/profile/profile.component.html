@@ -1,5 +1,22 @@
 <header>
+    @defer (on viewport) {
     <i class="bi bi-pencil-square icon" (click)="openDialog()"></i>
+    @if (imageUrl){
+    <img [src]="imageUrl" width="130px" height="130px" loading="eager">
+    } @else{
     <img src="../../../assets/images/pfp.jpg" width="130px" height="130px" loading="eager">
+    }
     <h1><strong>{{ nameUser }}</strong></h1>
+    <br>
+    <h2>Descrição</h2>
+    <p>{{ descricao }}</p>
+    }@placeholder {
+    <section class="section-loader">
+        <div id="loader"></div>
+    </section>
+    }@error {
+    <section>
+        <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+    </section>
+    }
 </header>
