@@ -11,9 +11,9 @@
     }
     @if (isLoggedIn){
       @if (imageUrl){
-      <img class="user-picture" [matMenuTriggerFor]="menu" [src]="imageUrl" width="30px" height="30px" loading="eager">
+      <img class="user-picture" style="object-fit: cover;" [matMenuTriggerFor]="menu" [src]="imageUrl" width="30px" height="30px" loading="eager">
       } @else{
-      <img class="user-picture" [matMenuTriggerFor]="menu" src="../../../assets/images/pfp.jpg" width="30px" height="30px" loading="eager">
+      <img class="user-picture" [matMenuTriggerFor]="menu" style="object-fit: cover;" src="../../../assets/images/pfp.jpg" width="30px" height="30px" loading="eager">
       }
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
