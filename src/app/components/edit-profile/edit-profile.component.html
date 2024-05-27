@@ -5,7 +5,7 @@
 
     <form [formGroup]="profileEditForm" (ngSubmit)="submit()" class="main-content">
         <div class="left-area">
-            <img [src]="selectedImage || '../../../assets/images/normalPfp.jpg'" class="profile-picture" />
+            <img [src]="selectedImage || '../../../assets/images/pfp.jpg'" class="profile-picture" />
             <div class="change-pfp-area">
                 <label for="fupload" class="control-label label-bordered icon"><i class="bi bi-plus"></i></label>
                 <input type="file" id="fupload" name="fupload" class="change-pfp" formControlName="profilePicture"
