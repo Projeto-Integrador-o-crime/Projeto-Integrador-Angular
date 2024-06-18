@@ -6,7 +6,6 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { ILogin } from '../interfaces/ILogin';
 import { ICadastro } from '../interfaces/ICadastro';
 import { IEditUser } from '../interfaces/IEditUser';
-import { IId } from '../interfaces/IId';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,7 @@ export class ApiService {
   #http = inject(HttpClient);
   #url = signal(environment.apiTask);
 
-  // Listar usuários
+  // Listar todos os usuários
   public httpListUser$(): Observable<IUser[]> {
     return this.#http.get<IUser[]>(this.#url() + `/users`);
   }

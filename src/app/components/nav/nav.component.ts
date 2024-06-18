@@ -46,7 +46,6 @@ export class NavComponent implements OnInit {
       this.idUser = userData.id;
     }
     if (!this.idUser) {
-      console.log('cansei menó, cansei.')
       return;
     }
 
@@ -56,7 +55,6 @@ export class NavComponent implements OnInit {
     };
 
     this.apiService.httpListByidUser$(body).subscribe((res) => {
-      console.log(res);
       this.nameUser = res.name;
       this.descricao = res.description;
       this.imageUrl = res.profilePicture;
