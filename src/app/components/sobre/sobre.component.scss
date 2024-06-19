@@ -3,7 +3,7 @@
     width: 100%;
     padding: 70px 150px;
 
-    background: var(--grey);
+    background: var(--white);
 
 
     .container {
@@ -22,28 +22,34 @@
 
       .sub-title {
         margin-bottom: 55px;
-      }
-
+        
+       .left{
+       
+       } 
+       
+       }
+      
     }
-
-    .span {
-      display: end;
-      justify-content: end;
-      align-items: end;
-      flex-direction: column;
-      opacity: 69%;
-      cursor: pointer;
-      transition: .2s;
-      font-size: 16px;
-
-      &:hover{
-        opacity: 100%;
-      }
     
-      .icon{
-        font-size: 16px;
-        margin: 0 5px 10px 0;
-      }
-    }
+
+    // .span {
+    //   display: end;
+    //   justify-content: end;
+    //   align-items: end;
+    //   flex-direction: column;
+    //   opacity: 69%;
+    //   cursor: pointer;
+    //   transition: .2s;
+    //   font-size: 16px;
+
+    //   &:hover{
+    //     opacity: 100%;
+    //   }
+    
+    //   .icon{
+    //     font-size: 16px;
+    //     margin: 0 5px 10px 0;
+    //   }
+    //}
   }
 }
