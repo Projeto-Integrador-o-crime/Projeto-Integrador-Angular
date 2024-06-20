@@ -1,0 +1,27 @@
+:host {
+    .description{
+        p {
+            opacity: 100%;
+        }
+
+        span {
+            color: var(--primary);
+        }
+    }
+}
+
+.principal {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 150px;
+}
+
+.buttons {
+
+    padding: 20px;
+    button {
+        
+    }
+}
