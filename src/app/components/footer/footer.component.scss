@@ -1,0 +1,57 @@
+:host {
+  footer#footer {
+    width: 100%;
+    display: flex;
+    min-height: max-content;
+
+    padding: 40px 150px;
+    background: var(--black-10);
+
+    .container,
+    .copyright,
+    .more {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .container {
+      width: 100%;
+
+      .copyright {
+        p {
+          color: var(--white);
+          margin: 0 !important;
+
+          span {
+            color: var(--primary);
+            font-weight: bold;
+          }
+        }
+      }
+
+      .more {
+        a,
+        .terms {
+          cursor: pointer;
+        }
+
+        a {
+          color: var(--white);
+          margin-left: 50px;
+          opacity: 69%;
+
+          transition: .2s;
+        }
+        a:hover{
+          opacity: 100%;
+        }
+
+        .terms {
+          color: var(--primary);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

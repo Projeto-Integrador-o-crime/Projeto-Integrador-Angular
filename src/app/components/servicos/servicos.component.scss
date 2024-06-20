@@ -16,18 +16,22 @@
 
         font-size: 30px;
       }
+
       span {
         color: var(--primary);
         font-weight: bold;
       }
+
       .descount {
         color: var(--red);
         text-decoration: line-through;
         font-weight: bold;
       }
+
       .sub-title-descount {
         margin-bottom: 10px;
       }
+
       .sub-title {
         margin-bottom: 55px;
       }
@@ -44,15 +48,15 @@
         transition: .2s;
 
         .insta-title {
-          background: linear-gradient(
-            to right,
-            #833AB4,
-            #FD1D1D,
-            #FCB045,
-          );
+          background: linear-gradient(to right,
+              #833AB4,
+              #FD1D1D,
+              #FCB045,
+            );
           -webkit-text-fill-color: transparent;
           -webkit-background-clip: text;
         }
+
         h2 {
           margin-bottom: 30px;
 
@@ -108,14 +112,15 @@
           }
         }
 
-        &:hover{
+        &:hover {
           border: 1px solid var(--primary-50);
         }
       }
-      .card-recomended{
+
+      .card-recomended {
         position: relative;
 
-        &::after{
+        &::after {
           content: 'RECOMENDADO!';
           position: absolute;
           top: -15px;
