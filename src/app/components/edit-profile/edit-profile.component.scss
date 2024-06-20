@@ -53,13 +53,13 @@
 
                     border-radius: 50%;
                     border: 5px solid var(--white);
-                    background-color: var(--primary);
+                    background: linear-gradient(to right,#8459E8,#5271FF);
 
                     cursor: pointer;
                     transition: .1s;
 
                     &:hover {
-                        background: var(--primary-10);
+                        // background: var(--primary-10);
                     }
 
                     .icon {

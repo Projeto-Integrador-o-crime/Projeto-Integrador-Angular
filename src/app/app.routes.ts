@@ -7,42 +7,42 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {
     path: '',
-    title: 'Página inicial',
+    title: 'Gaed Tech | Página inicial',
     component: HomeComponent,
   },
   {
     path: 'cadastro',
-    title: 'Cadastre-se',
+    title: 'Gaed Tech | Cadastro',
     component: CadastroComponent,
   },
   {
     path: 'login',
-    title: 'Login',
+    title: 'Gaed Tech | Login',
     component: LoginComponent,
   },
   {
     path: 'dashboard',
-    title: 'Dashboard',
+    title: 'Gaed Tech | Dashboard',
     component: DashboardComponent,
   },
   {
     path: 'reset-password',
-    title: 'Redefinir Senha',
+    title: 'Gaed Tech | Redefinir Senha',
     component: RedefinirSenhaComponent
   },
   {
     path: 'profile',
-    title: 'Meu Perfil',
+    title: 'Gaed Tech | Meu Perfil',
     component: ProfileComponent
   },
   {
     path: '**',
-    title: 'Página não encontada 😞',
+    title: 'Gaed Tech |Página não encontada 😞',
     component: NotFoundComponent,
   },
 ];

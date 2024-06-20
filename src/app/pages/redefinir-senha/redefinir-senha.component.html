@@ -3,7 +3,7 @@
   <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
     <a [routerLink]="['']"><i class="bi bi-x-lg close"></i></a>
     <div class="header">
-      <h1><i class="bi bi-envelope-check icon"></i>Deseja redefinir sua senha<strong>?</strong></h1>
+      <h1><i class="bi bi-envelope-check icon"></i>Deseja redefinir sua senha<strong style="background: linear-gradient(to right,#8459E8,#5271FF); -webkit-text-fill-color: transparent; -webkit-background-clip: text;">?</strong></h1>
       <p>Redefina sua senha com seu email cadastrado.</p>
     </div>
 
@@ -24,7 +24,7 @@
       }
     </label>
 
-    <button [disabled]="!profileForm.valid" class="btn-submit">Redefinir senha</button>
+    <button [disabled]="!profileForm.valid" class="btn-submit" style="background: linear-gradient(to right,#8459E8,#5271FF);">Redefinir senha</button>
     @if (getRedefinirSenhaError(); as error) {
     <div class="error-msg-container">
       <p class="error-msg">{{ error }}</p>
@@ -40,7 +40,7 @@
       <hr />
       <p>
         lembrou sua senha?
-        <strong><a [routerLink]="['/login']">Login</a></strong>
+        <strong><a [routerLink]="['/login']" style="color: #365bff;">Login</a></strong>
       </p>
     </div>
   </form>

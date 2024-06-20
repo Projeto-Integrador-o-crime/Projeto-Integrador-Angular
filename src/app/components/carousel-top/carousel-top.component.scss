@@ -80,13 +80,13 @@
         color: var(--white);
         font-size: 14px;
         font-weight: bold;
-        background: var(--primary);
+        background: linear-gradient(45deg, #8459E8, #5271FF);
 
         cursor: pointer;
         transition: 0.2s;
 
         &:hover {
-          background: var(--primary-10);
+          // background: var(--primary-10);
         }
       }
 

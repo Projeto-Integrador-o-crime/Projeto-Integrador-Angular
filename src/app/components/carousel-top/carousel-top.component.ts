@@ -9,5 +9,5 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   styleUrl: './carousel-top.component.scss'
 })
 export class CarouselTopComponent {
-  myInterval = 9500;
+  myInterval = 7500;
 }

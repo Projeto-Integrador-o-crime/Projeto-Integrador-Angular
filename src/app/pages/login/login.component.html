@@ -3,7 +3,7 @@
   <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
     <a [routerLink]="['']"><i class="bi bi-x-lg close"></i></a>
     <div class="header">
-      <h1>Seja bem-vindo de volta<strong>!</strong></h1>
+      <h1>Seja bem-vindo de volta<strong style="background: linear-gradient(to right,#8459E8,#5271FF); -webkit-text-fill-color: transparent; -webkit-background-clip: text;" class="terms">!</strong></h1>
       <p>Entre com uma conta criada.</p>
     </div>
 
@@ -48,7 +48,7 @@
       <hr />
       <p>
         não possui uma conta?
-        <strong><a [routerLink]="['/cadastro']">Cadastrar-se</a></strong>
+        <strong><a [routerLink]="['/cadastro']" style="color: #365bff;">Cadastrar-se</a></strong>
       </p>
     </div>
   </form>

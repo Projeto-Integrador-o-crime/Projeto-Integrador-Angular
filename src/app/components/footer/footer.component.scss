@@ -31,9 +31,14 @@
       }
 
       .more {
+
         a,
         .terms {
           cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
 
         a {
@@ -43,7 +48,8 @@
 
           transition: .2s;
         }
-        a:hover{
+
+        a:hover {
           opacity: 100%;
         }
 

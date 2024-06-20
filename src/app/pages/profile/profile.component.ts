@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { EditProfileComponent } from '../../components/edit-profile/edit-profile.component';
 import { ApiService } from '../../services/api.service';
 
 interface UserData {

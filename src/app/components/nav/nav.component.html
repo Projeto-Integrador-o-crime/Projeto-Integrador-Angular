@@ -1,38 +1,43 @@
-<div class="header">
-  <a href="#" class="title">LOGO</a>
+<div lang="pt-BR" class="header" title="Cabeçalho." id="header">
+  <a href="#header"><img src="../../../assets/images/logo-gaed.png" style="height: 40px; width: 40px;"
+      alt="Logo da gaedTech" class="title" title="GaedTech Logo."></a>
 
-  <ul class="navegation">
-    <li><a href="#" class="nav-system">SERVIÇOS</a></li>
-    <li><a href="#services" class="nav-system-news">EM ALTA</a></li>
-    <li><a href="#about" class="nav-system">SOBRE</a></li>
-    <li><a href="#" class="nav-system">EQUIPES</a></li>
+  <ul class="navegation" title="Área de Navegação.">
+    <li><a href="#header" class="nav-system" title="Início.">NOVIDADES</a></li>
+    <li><a href="#services"
+        class="nav-system-news word-color" title="Pacotes em Alta no Momento.">PACOTES EM ALTA</a></li>
+    <li><a href="#about" class="nav-system" title="Sobre Nossa Empresa.">SOBRE</a></li>
+    <li><a href="#joinUs" class="nav-system" title="Nossas Redes Sociais e Contatos.">REDES SOCIAIS</a></li>
     @if (!isLoggedIn){
-    <a [routerLink]="['/login']" class="btn-login">ENTRAR</a>
+    <a [routerLink]="['/login']" class="btn-login" title="Realizar Login.">ENTRAR</a>
     }
     @if (isLoggedIn){
-      @if (imageUrl){
-      <img class="user-picture" style="object-fit: cover;" [matMenuTriggerFor]="menu" [src]="imageUrl" width="30px" height="30px" loading="eager">
-      } @else{
-      <img class="user-picture" [matMenuTriggerFor]="menu" style="object-fit: cover;" src="../../../assets/images/pfp.jpg" width="30px" height="30px" loading="eager">
-      }
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <i class="bi bi-file-medical" style="font-size: 17px; margin-right: 10px;"></i>
-          <span style="font-size: 12px;">Meus Packs</span>
-        </button>
-        <button mat-menu-item (click)="myProfile()">
-          <i class="bi bi-person" style="font-size: 17px; margin-right: 10px;"></i>
-          <span style="font-size: 12px;">Perfil</span>
-        </button>
-        <button mat-menu-item>
-          <i class="bi bi-gear" style="font-size: 17px; margin-right: 10px;"></i>
-          <span style="font-size: 12px;">Configurações</span>
-        </button>
-        <button mat-menu-item (click)="doLogoff()">
-          <i class="bi bi-power" style="font-size: 17px; margin-right: 10px; color: red;"></i>
-          <span style="font-size: 12px; color: red;">Logoff</span>
-        </button>
-      </mat-menu>
+    @if (imageUrl){
+    <img alt="Esta é sua Foto de Perfil" title="Foto de Perfil." class="user-picture" style="object-fit: cover;"
+      [matMenuTriggerFor]="menu" [src]="imageUrl" width="30px" height="30px" loading="eager">
+    } @else{
+    <img alt="Esta é sua Foto de Perfil Padrão do Nosso Sistema" title="Foto de Perfil." class="user-picture"
+      [matMenuTriggerFor]="menu" style="object-fit: cover;" src="../../../assets/images/pfp.jpg" width="30px"
+      height="30px" loading="eager">
+    }
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item title="Acessar Meus Packs Adquiridos.">
+        <i class="bi bi-file-medical icon-menu"></i>
+        <span class="span-menu">Meus Packs</span>
+      </button>
+      <button mat-menu-item (click)="myProfile()" title="Acessar Meu Perfil.">
+        <i class="bi bi-person icon-menu"></i>
+        <span class="span-menu">Perfil</span>
+      </button>
+      <button mat-menu-item title="Acessar Minhas Configurações.">
+        <i class="bi bi-gear icon-menu"></i>
+        <span class="span-menu">Configurações</span>
+      </button>
+      <button mat-menu-item (click)="doLogoff()" title="Sair da Minha Conta.">
+        <i class="bi bi-power icon-logof"></i>
+        <span class="logof">Logoff</span>
+      </button>
+    </mat-menu>
     }
   </ul>
 </div>

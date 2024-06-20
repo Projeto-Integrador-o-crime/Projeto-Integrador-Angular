@@ -2,54 +2,102 @@
   .header {
     width: 100%;
     padding: 70px 150px;
-
     background: var(--white);
-
 
     .container {
       width: 100%;
 
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-start;
       align-items: center;
-      
 
-      h2 {
-        margin-bottom: 15px;
+      .left-area {
+        width: 50%;
 
-        font-size: 30px;
+        h2 {
+          margin-bottom: 25px;
+          font-weight: bold;
+          font-size: 30px;
+        }
+
+        .sub-title {
+          margin-bottom: 40px;
+        }
+
+        button {
+          width: 80%;
+          padding: 15px 20px;
+          margin: 10px;
+
+          border: none;
+          border-radius: 7px;
+          font-size: 15px;
+          font-weight: bold;
+          color: var(--white);
+          background: linear-gradient(45deg, #8459E8, #5271FF);
+
+          cursor: pointer;
+          transition: background-color 0.5s ease;
+
+          &:hover {
+            background-color: #fff;
+          }
+        }
       }
 
-      .sub-title {
-        margin-bottom: 55px;
-        
-       .left{
-       
-       } 
-       
-       }
-      
+      .right-area {
+        width: 50%;
+
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .top-img-section {
+          width: 100%;
+
+          display: flex;
+          justify-content: flex-end;
+
+          .left-img,
+          .right-img {
+            border-radius: 15px;
+            width: 200px;
+            height: 200px;
+            background: var(--grey);
+            box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1);
+          }
+
+          .left-img {
+            background-image: url(../../../assets/images/alek.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+
+          .right-img {
+            background-image: url(../../../assets/images/lobo.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+
+          .left-img:first-child {
+            margin-right: 15px;
+          }
+        }
+
+        .bottom-img {
+          border-radius: 15px;
+          margin-top: 15px;
+          width: 415px;
+          height: 200px;
+          background: var(--grey);
+          box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .bottom-img {
+          background-image: url(../../../assets/images/lobo_de_encarando.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
     }
-    
-
-    // .span {
-    //   display: end;
-    //   justify-content: end;
-    //   align-items: end;
-    //   flex-direction: column;
-    //   opacity: 69%;
-    //   cursor: pointer;
-    //   transition: .2s;
-    //   font-size: 16px;
-
-    //   &:hover{
-    //     opacity: 100%;
-    //   }
-    
-    //   .icon{
-    //     font-size: 16px;
-    //     margin: 0 5px 10px 0;
-    //   }
-    //}
   }
 }

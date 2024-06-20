@@ -117,13 +117,13 @@
         border: none;
         border-radius: 10px;
         color: var(--white);
-        background: var(--primary);
+        background: linear-gradient(to right,#8459E8,#5271FF);
 
         cursor: pointer;
         transition: 0.2s;
 
         &:hover {
-          background: var(--primary-10);
+          // background: var(--primary-10);
         }
       }
 

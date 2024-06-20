@@ -1,32 +1,35 @@
 <div class="dialog-edit">
-    <h1 class="main-title"><i class="bi bi-pencil-fill"></i> Editar Perfil<strong>!</strong></h1>
-    <p>Personalize seu Perfil do seu Jeito!</p>
-    <a mat-button [mat-dialog-close]="true"><i class="bi bi-x-lg close"></i></a>
+  <h1 class="main-title"><i class="bi bi-pencil-fill"></i> Editar Perfil<strong
+      style="background: linear-gradient(to right,#8459E8,#5271FF); -webkit-text-fill-color: transparent; -webkit-background-clip: text;">!</strong>
+  </h1>
+  <p>Personalize seu Perfil do seu Jeito!</p>
+  <a mat-button [mat-dialog-close]="true"><i class="bi bi-x-lg close"></i></a>
 
-    <form [formGroup]="profileEditForm" (ngSubmit)="submit()" class="main-content">
-        <div class="left-area">
-            <img [src]="selectedImage || '../../../assets/images/pfp.jpg'" class="profile-picture" />
-            <div class="change-pfp-area">
-                <label for="fupload" class="control-label label-bordered icon"><i class="bi bi-plus"></i></label>
-                <input type="file" id="fupload" name="fupload" class="change-pfp" formControlName="profilePicture"
-                    (change)="onFileChanged($event)" />
-            </div>
-        </div>
-        <div class="right-area">
-            <label class="input">
-                Nome de Usuário:
-                <input type="text" placeholder="Nome de Usuário..." formControlName="name" />
-            </label>
-            <label class="input">
-                Descrição:
-                <textarea name="descricao" id="descricao" placeholder="Digite Sua Descrição Aqui!"
-                    formControlName="descricao"></textarea>
-            </label>
-            <div class="buttons">
-                <button [disabled]="!profileEditForm.valid" class="btn-submit">
-                    Concluir Edição
-                </button>
-            </div>
-        </div>
-    </form>
+  <form [formGroup]="profileEditForm" (ngSubmit)="submit()" class="main-content">
+    <div class="left-area">
+      <img [src]="selectedImage || '../../../assets/images/pfp.jpg'" class="profile-picture" />
+      <div class="change-pfp-area">
+        <label for="fupload" class="control-label label-bordered icon"><i class="bi bi-plus"></i></label>
+        <input type="file" id="fupload" name="fupload" class="change-pfp" formControlName="profilePicture"
+          (change)="onFileChanged($event)" />
+      </div>
+    </div>
+    <div class="right-area">
+      <label class="input">
+        Nome de Usuário:
+        <input type="text" placeholder="Nome de Usuário..." formControlName="name" />
+      </label>
+      <label class="input">
+        Descrição:
+        <textarea name="descricao" id="descricao" placeholder="Digite Sua Descrição Aqui!"
+          formControlName="descricao"></textarea>
+      </label>
+      <div class="buttons">
+        <button [disabled]="!profileEditForm.valid" class="btn-submit"
+          style="background: linear-gradient(to right,#8459E8,#5271FF);">
+          Concluir Edição
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
