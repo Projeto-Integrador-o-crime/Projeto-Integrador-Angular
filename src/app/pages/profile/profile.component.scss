@@ -1,69 +1,52 @@
 :host {
-    &::before {
-        content: '';
-        display: flex;
-        width: 100%;
-        height: 150px;
-        margin-bottom: -65px;
-        background: linear-gradient(to top,#8459E8,#5271FF);
+  &::before {
+    content: '';
+    display: flex;
+    width: 100%;
+    height: 150px;
+    margin-bottom: -65px;
+    background: linear-gradient(to top, #8459E8, #5271FF);
+  }
+
+  .icon {
+    padding: 10px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 69%;
+
+    color: var(--white);
+    font-size: 16px;
+    transition: .2s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 100%;
     }
+  }
 
-    .icon {
-        padding: 10px;
+  header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-        position: absolute;
-        top: 0;
-        right: 0;
-        opacity: 69%;
+  header {
+    img {
+      border-radius: 100px;
+      border: 5px solid var(--white);
+      margin-bottom: 15px;
+      object-fit: cover;
 
-        color: var(--white);
-        font-size: 16px;
-        transition: .2s;
-        cursor: pointer;
+      cursor: pointer;
+      transition: .2s;
 
-        &:hover {
-            opacity: 100%;
-        }
+      &:hover{
+        opacity: 10%;
+        background: #000;
+      }
     }
-
-    header,
-    aside {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header {
-        img {
-            border-radius: 100px;
-            border: 5px solid var(--white);
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-    }
-
-    aside {
-        p {
-            text-align: center;
-        }
-
-        nav ul,
-        section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-        }
-    }
-
-    @media (max-width: 750px) {
-
-        aside nav ul,
-        section {
-            flex-direction: column;
-            gap: 15px;
-        }
-    }
+  }
 }

@@ -2,9 +2,9 @@
     @defer (on viewport) {
     <i class="bi bi-pencil-square icon" (click)="openDialog()"></i>
     @if (imageUrl){
-    <img [src]="imageUrl" width="130px" height="130px" loading="eager">
+    <img [src]="imageUrl" width="130px" height="130px" loading="eager" (click)="openDialog()">
     } @else{
-    <img src="../../../assets/images/pfp.jpg" width="130px" height="130px" loading="eager">
+    <img src="../../../assets/images/pfp.jpg" width="130px" height="130px" loading="eager" (click)="openDialog()">
     }
     <h1><strong>{{ nameUser }}</strong></h1>
     <br>
