@@ -1,4 +1,15 @@
 :host {
+  .main-container-already-logged{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fff !important;
+  }
+
   .main-container {
     width: 100%;
     height: 100vh;

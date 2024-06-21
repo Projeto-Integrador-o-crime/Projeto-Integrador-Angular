@@ -8,13 +8,18 @@
     align-items: center;
     flex-direction: column;
 
-    .error-msg {
-      width: 60%;
-
+    .main-error {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
+      img{
+        width: 45%;
+        margin-bottom: 45px;
+        border-radius: 25px;
+        opacity: 89%;
+      }
 
       .desc {
         h1 {

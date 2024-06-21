@@ -1,6 +1,6 @@
-<div class="main-container">
+<div [ngClass]="isLoggedIn ? 'main-container-already-logged' : 'main-container'">
   @if (isLoggedIn){
-  <h1>Vc já ta logado nessa porra. Tenha um ótimo dia!</h1>
+  <app-alreadylogged />
   } @else{
   @defer (on viewport) {
   <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">

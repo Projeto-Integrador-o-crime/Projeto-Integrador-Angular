@@ -4,15 +4,23 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { AlreadyloggedComponent } from '../../components/alreadylogged/alreadylogged.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, AlreadyloggedComponent, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
+  public isLoggedIn: boolean = false;
+  public isLogged: boolean = false;
+  public errorEmail: string = '';
+  public erroPassword: string = '';
+  public getLoginError = this.apiService.getLoginError;
+
   // API injeção
   constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
   #fb = inject(FormBuilder);
@@ -20,12 +28,6 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
-
-  public isLoggedIn: boolean = false;  
-  public isLogged: boolean = false;
-  public errorEmail: string = '';
-  public erroPassword: string = '';
-  public getLoginError = this.apiService.getLoginError;
 
   // forumulario
   public profileForm = this.#fb.group({
@@ -78,9 +80,9 @@ export class LoginComponent implements OnInit{
       this.apiService.httpLoginUser$(body).subscribe((res) => {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userData', JSON.stringify(res));
-        
+
         this.authService.setLoggedIn(true);
-        
+
         this.router.navigate(['']);
       });
     }

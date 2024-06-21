@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
+import { AlreadyloggedComponent } from '../../components/alreadylogged/alreadylogged.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, AlreadyloggedComponent, CommonModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })

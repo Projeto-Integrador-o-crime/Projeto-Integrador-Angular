@@ -1,0 +1,19 @@
+<div class="main-container">
+  @defer (on viewport) {
+  <section class="main-error">
+    <img src="../../../assets/images/already-logged.jpg" alt="Você já está loggado no nosso sistema.">
+    <div class="desc">
+      <h1><strong style="text-decoration: none">Vish</strong>, percebemos que você ainda está conectado...</h1>
+      <p>Mas não se preocupe, para desvendar os segredos desta página encantadora, basta realizar o <strong style="text-decoration: none">Logof</strong> na entrada principal. Vamos lá explorar juntos? <strong><a [routerLink]="['']">Voltar para página principal</a></strong></p>
+    </div>
+  </section>
+  }@placeholder {
+  <section class="section-loader">
+    <div id="loader"></div>
+  </section>
+  }@error {
+  <section>
+    <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+  </section>
+  }
+</div>
