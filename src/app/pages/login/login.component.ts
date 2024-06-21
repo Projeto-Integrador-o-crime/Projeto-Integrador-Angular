@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
@@ -12,11 +12,16 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   // API injeção
   constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
   #fb = inject(FormBuilder);
 
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedIn();
+  }
+
+  public isLoggedIn: boolean = false;  
   public isLogged: boolean = false;
   public errorEmail: string = '';
   public erroPassword: string = '';

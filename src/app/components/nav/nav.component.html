@@ -8,6 +8,7 @@
         class="nav-system-news word-color" title="Pacotes em Alta no Momento.">PACOTES EM ALTA</a></li>
     <li><a href="#about" class="nav-system" title="Sobre Nossa Empresa.">SOBRE</a></li>
     <li><a href="#joinUs" class="nav-system" title="Nossas Redes Sociais e Contatos.">REDES SOCIAIS</a></li>
+    <li><a [routerLink]="['/catalogo']" class="nav-system" title="Nossas Redes Sociais e Contatos.">CATÁLOGO</a></li>
     @if (!isLoggedIn){
     <a [routerLink]="['/login']" class="btn-login" title="Realizar Login.">ENTRAR</a>
     }

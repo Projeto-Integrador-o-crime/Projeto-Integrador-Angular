@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,17 +12,22 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
-export class CadastroComponent{
-  // API
-  constructor(private apiService: ApiService) {}
-  #fb = inject(FormBuilder);
-
+export class CadastroComponent implements OnInit {
+  public isLoggedIn: boolean = false;
   public isRegistered: boolean = false;
   public errorName: string = '';
   public errorEmail: string = '';
   public erroPassword: string = '';
   public erroRepeatPassword: string = '';
   public getCadastroError = this.apiService.getCadastroError;
+
+  // API
+  constructor(private authService: AuthService, private apiService: ApiService, private router: Router) { }
+  #fb = inject(FormBuilder);
+
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedIn();
+  }
 
   // forumulario
   public profileForm = this.#fb.group({
@@ -97,6 +104,7 @@ export class CadastroComponent{
 
       this.apiService.httpPostUser$(body).subscribe((res) => {
         this.isRegistered = true;
+        this.router.navigate(['/login']);
       });
     }
   }

@@ -1,9 +1,14 @@
 <div class="main-container">
+  @if (isLoggedIn){
+    <h1>Vc já ta logado nessa porra. Tenha um ótimo dia!</h1>
+  } @else{
   @defer (on viewport) {
   <form [formGroup]="profileForm" (ngSubmit)="submit()" class="form-cadastro">
     <a [routerLink]="['']"><i class="bi bi-x-lg close"></i></a>
     <div class="header">
-      <h1>Cadastre-se<strong style="background: linear-gradient(to right,#8459E8,#5271FF); -webkit-text-fill-color: transparent; -webkit-background-clip: text;">!</strong></h1>
+      <h1>Cadastre-se<strong
+          style="background: linear-gradient(to right,#8459E8,#5271FF); -webkit-text-fill-color: transparent; -webkit-background-clip: text;">!</strong>
+      </h1>
       <p>Crie uma conta gratis!</p>
     </div>
 
@@ -39,7 +44,8 @@
       }
     </label>
 
-    <button [disabled]="!profileForm.valid" class="btn-submit" style="background: linear-gradient(to right,#8459E8,#5271FF);">
+    <button [disabled]="!profileForm.valid" class="btn-submit"
+      style="background: linear-gradient(to right,#8459E8,#5271FF);">
       Cadastrar-se
     </button>
     @if (getCadastroError(); as error) {
@@ -69,5 +75,6 @@
   <section>
     <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
   </section>
+  }
   }
 </div>

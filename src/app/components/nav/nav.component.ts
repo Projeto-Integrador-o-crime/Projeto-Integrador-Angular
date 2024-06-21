@@ -14,11 +14,11 @@ import { ApiService } from '../../services/api.service';
   styleUrl: './nav.component.scss',
 })
 export class NavComponent implements OnInit {
-  isLoggedIn: boolean = false;
-  idUser: string | null = null;
-  nameUser: string = '';
-  descricao: string = '';
-  imageUrl = null;
+  public isLoggedIn: boolean = false;
+  public idUser: string | null = null;
+  public nameUser: string = '';
+  public descricao: string = '';
+  public imageUrl = null;
 
   constructor(private authService: AuthService, private router: Router, private apiService: ApiService) { }
 

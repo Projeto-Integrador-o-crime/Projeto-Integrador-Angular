@@ -71,8 +71,29 @@
               justify-content: flex-end;
               margin-left: 35px;
 
-              ul {
+              ul.main-list {
+                list-style: none;
                 padding-left: 0 !important;
+
+                li{
+                  margin-bottom: 10px;
+                  font-size: 17px;
+                  
+                  span{
+                    opacity: 69%;
+  
+                    cursor: pointer;
+                    transition: .2s;
+  
+                    &:hover{
+                      opacity: 100%;
+                    }
+  
+                    &.word-color-see{
+                      color: #365bff;
+                    }
+                  }
+                }
               }
             }
           }
@@ -81,3 +102,12 @@
     }
   }
 }
+
+// NGDEEP
+.word-color {
+  background: linear-gradient(to right, #8459E8, #5271FF);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+}
+
