@@ -16,7 +16,6 @@
       section.left-area {
         width: 50%;
         margin-top: 15px;
-        padding-right: 120px;
 
         h2 {
           margin-bottom: 25px;
@@ -47,11 +46,6 @@
             }
           }
         }
-
-        span {
-          color: var(--primary);
-          font-weight: bold;
-        }
       }
 
       section.right-area {
@@ -79,7 +73,8 @@
                   margin-bottom: 10px;
                   font-size: 17px;
                   
-                  span{
+                  a{
+                    color: #212529;
                     opacity: 69%;
   
                     cursor: pointer;
