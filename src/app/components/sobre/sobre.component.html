@@ -20,11 +20,21 @@
       </div>
     </div>
     <div title="Área da Direita." class="right-area">
+      @defer (on viewport) {
       <section class="top-img-section">
         <div class="left-img" title="Imagem Meramente Ilustrativa."></div>
         <div class="right-img" title="Imagem Meramente Ilustrativa."></div>
       </section>
       <div class="bottom-img" title="Imagem Meramente Ilustrativa."></div>
+      }@placeholder {
+      <section title="Carregando..." class="section-loader">
+        <div id="loader"></div>
+      </section>
+      }@error {
+      <section title="Ocorreu um erro.">
+        <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+      </section>
+      }
     </div>
   </div>
 </div>

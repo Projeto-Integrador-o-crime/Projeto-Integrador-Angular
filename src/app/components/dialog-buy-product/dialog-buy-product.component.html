@@ -1,0 +1,59 @@
+<mat-dialog-content class="mat-typography">
+  @defer (on viewport) {
+  <a mat-dialog-close><i class="bi bi-x-lg close" style="color: #000;"></i></a>
+  <div class="favorite">
+    <i class="bi" [ngClass]="{ 'bi-heart-fill': isFilled, 'bi-heart': !isFilled }" (click)="toggleHeart()"></i>
+  </div>
+  <section class="left-area">
+    <div class="section-img">
+      <img src="../../../assets/images/Tesate_img_2.jpg" alt="Imagem meramente ilustrativa.">
+      <img src="../../../assets/images/Tesate_img_2.jpg" alt="Imagem meramente ilustrativa.">
+      <img src="../../../assets/images/Tesate_img_2.jpg" alt="Imagem meramente ilustrativa.">
+    </div>
+    <div class="main-img">
+      <img src="../../../assets/images/Tesate_img_2.jpg" alt="Imagem meramente ilustrativa.">
+    </div>
+  </section>
+  <section class="right-area">
+    <h2>Não tem jeito, se fudemo.</h2>
+    <div class="description">
+      <h2 style="font-size: 25px;">R$ 57,90</h2>
+      <span>197,90</span>
+    </div>
+    <hr style="border-top: 3px solid; margin: 0px 0px 30px 0px !important; border-radius: 50%; opacity: 10%;">
+    <div class="rating">
+      <i class="bi bi-star-fill star-icon"></i>
+      <i class="bi bi-star-fill star-icon"></i>
+      <i class="bi bi-star-fill star-icon"></i>
+      <i class="bi bi-star-fill star-icon"></i>
+      <i class="bi bi-star star-icon"></i>
+      <span>(1 Person reviewed this product)</span>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <span class="show-more">Mostrar mais</span>
+
+    <footer class="footer-informations">
+      <span><strong style="cursor: pointer;">Categoria:</strong> Se fude</span>
+      <span><strong style="cursor: pointer;">Tag:</strong> mo</span>
+    </footer>
+
+    <div class="buttons">
+      <button class="buy-now">Comprar Agora!</button>
+      <button style="flex-direction: row;
+            align-items: center;
+            justify-content: center;" class="card">Adicionar ao Carrinho<i
+          class="bi bi-cart-fill card-icon"></i></button>
+    </div>
+  </section>
+  }@placeholder {
+  <section class="section-loader">
+    <div id="loader"></div>
+  </section>
+  }@error {
+  <section>
+    <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+  </section>
+  }
+</mat-dialog-content>

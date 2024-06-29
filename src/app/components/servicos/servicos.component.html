@@ -10,7 +10,7 @@
       <div class="row">
         @defer (on viewport) {
         <div class="col">
-          <div title="Este Pacote é Recomendado para Compra." class="card card-recomended">
+          <div title="Este Pacote é Recomendado para Compra." class="card card-recomended" (click)="openDialog()">
             <h2 title="Título do Primeiro Pacote.">Instagram <i class="bi bi-instagram insta-title"></i></h2>
             <p title="Descrição do Primeiro Pacote." class="sub-title">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -20,7 +20,7 @@
             </p>
             <h1 title="Preço Total do Primeiro Pacote" class="title">R$ 57,90</h1>
 
-            <button title="Botão Para Visualizar Informações do Pacote">VISUALIZAR PACOTE</button>
+            <button title="Botão Para Visualizar Informações do Pacote" (click)="openDialog()">VISUALIZAR PACOTE</button>
             <hr />
 
             <div title="Elementos que o Pacote Disponibiliza" class="desc">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col">
-          <div title="Este é o Segundo Pacote." class="card">
+          <div title="Este é o Segundo Pacote." class="card" (click)="openDialog()">
             <h2 title="Título do Segundo Pacote.">Instagram <i class="bi bi-instagram insta-title"></i></h2>
             <p title="Descrição do Segundo Pacote." class="sub-title">
               Adquira o pacote Pack Woman Boss +
@@ -45,7 +45,7 @@
             </p>
             <h1 title="Preço Total do Segundo Pacote" class="title">R$ 67,90</h1>
 
-            <button title="Botão Para Visualizar Informações do Pacote">VISUALIZAR PACOTE</button>
+            <button title="Botão Para Visualizar Informações do Pacote" (click)="openDialog()">VISUALIZAR PACOTE</button>
             <hr />
 
             <div title="Elementos que o Pacote Disponibiliza" class="desc">
