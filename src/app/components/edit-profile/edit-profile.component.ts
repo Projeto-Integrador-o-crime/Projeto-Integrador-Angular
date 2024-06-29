@@ -5,12 +5,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { HttpClient } from '@angular/common/http';
 
-interface ImgbbResponse {
-  data: {
-    url: string;
-  };
-}
-
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
@@ -19,10 +13,6 @@ interface ImgbbResponse {
   styleUrl: './edit-profile.component.scss'
 })
 export class EditProfileComponent {
-  // API
-  constructor(private apiService: ApiService, private http: HttpClient) { }
-  #fb = inject(FormBuilder);
-
   // Varáveis
   apiKey: string = 'e8fd7ca6417479482154b280ab46d204';
   selectedImage: string | ArrayBuffer | null = null;
@@ -31,6 +21,10 @@ export class EditProfileComponent {
   nameUser: string = '';
   descricao: string = '';
   imageUrl = null;
+
+  // API
+  constructor(private apiService: ApiService, private http: HttpClient) { }
+  #fb = inject(FormBuilder);
 
   ngOnInit(): void {
     const userDataString = localStorage.getItem('userData');
@@ -69,12 +63,9 @@ export class EditProfileComponent {
 
   fetchUserData() {
     // Fazer a chamada à API para obter os dados do usuário
-    const body = {
-      id: this.idUser
-    };
+    const id = this.idUser
 
-    this.apiService.httpListByidUser$(body).subscribe((res) => {
-      console.log(res)
+    this.apiService.httpListByidUser$(id).subscribe((res) => {
       if (res.length > 0) {
         const userData = res[0];
         this.profileEditForm.patchValue({

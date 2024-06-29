@@ -90,15 +90,15 @@ export class ApiService {
     )
   }
 
-  // Listar usuário Por Id (body)
+  // Listar usuário Por Id (url)
   #setListByIdError = signal<any | null>(null);
   get setListByIdError() {
     return this.#setListByIdError.asReadonly();
   }
-  public httpListByidUser$(body: any): Observable<any> {
+  public httpListByidUser$(id: any): Observable<any> {
     this.#setListByIdError.set(null);
 
-    return this.#http.post<any[]>(this.#url() + `/user-data`, body).pipe(
+    return this.#http.get<any[]>(`${this.#url()}/user-data/${id}`).pipe(
       catchError((e: HttpErrorResponse) => {
         this.#setListByIdError.set(e.error.message);
         return throwError(() => e);

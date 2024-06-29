@@ -57,12 +57,9 @@ export class ProfileComponent implements OnInit {
     }
 
     // Fazer a chamada à API para obter os dados do usuário
-    const body = {
-      id: this.idUser
-    };
+    const id = this.idUser
 
-    this.apiService.httpListByidUser$(body).subscribe((res) => {
-      console.log(res);
+    this.apiService.httpListByidUser$(id).subscribe((res) => {
       this.nameUser = res.name;
       this.descricao = res.description;
       this.imageUrl = res.profilePicture;
