@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RedefinirSenhaComponent } from './pages/redefinir-senha/redefinir-senha.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CadastroProductComponent } from './pages/cadastro-product/cadastro-product.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,11 @@ export const routes: Routes = [
     path: 'profile',
     title: 'Gaed Tech | Meu Perfil',
     component: ProfileComponent
+  },
+  {
+    path: 'cadastroProduct',
+    title: 'Gaed Tech | Cadastrar Produto',
+    component: CadastroProductComponent
   },
   {
     path: '**',

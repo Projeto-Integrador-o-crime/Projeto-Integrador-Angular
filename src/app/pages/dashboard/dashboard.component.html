@@ -4,7 +4,7 @@
       <h1>Dashboard</h1>
     </div>
     <hr />
-    <div class="table-element" (click)="openDashboard()">
+    <div class="table-element">
       <i class="bi bi-speedometer"></i>
       <label class="icon-select"><strong>Dashboard</strong></label>
     </div>
@@ -31,9 +31,13 @@
         </div>
       </mat-expansion-panel>
     </mat-accordion>
-    <div class="table-element" (click)="openTable()">
+    <div class="table-element" (click)="openTable('tableUser')">
       <i class="icon-select bi bi-table"></i>
-      <label class="icon-select"><strong>Tables</strong></label>
+      <label class="icon-select"><strong>Tabela Usuários</strong></label>
+    </div>
+    <div class="table-element" (click)="openTable('tableProducts')">
+      <i class="icon-select bi bi-table"></i>
+      <label class="icon-select"><strong>Tabela Produtos</strong></label>
     </div>
   </div>
 
@@ -57,13 +61,13 @@
       </div>
     </div>
 
-    @if (isTableOpen) {
+    @if (isTableUserOpen) {
     <div class="container-main-table">
       <app-table />
     </div>
-    } @if (isDashboardOpen) {
+    } @if (isTableProductsOpen) {
     <div class="container-main-table">
-      <app-dashboard-main />
+      <app-table-products />
     </div>
     }
   </div>

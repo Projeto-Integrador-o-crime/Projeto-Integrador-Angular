@@ -1,0 +1,71 @@
+<h1>Tabela Produtos</h1>
+<p>
+  DataTables is a third party plugin that is used to generate the demo table
+  below. For more information about DataTables, please visit the official
+  DataTables documentation.
+</p>
+
+@defer (on viewport) {
+<mat-form-field>
+  <mat-label>Filtro</mat-label>
+  <input class="input-filter" matInput (keyup)="applyFilter($event)" placeholder="Parametro..." #input />
+</mat-form-field>
+
+<div class="main-table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef class="top">.INDEX</th>
+      <td mat-cell *matCellDef="let element">
+        <strong>{{ element.position }}</strong>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef class="top">ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="top">Nome</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="top">Preço</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="top">Descrição</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="top">Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <i class="bi bi-x-circle icon-delete" (click)="deleteUser(element.id)"></i>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+</div>
+
+<hr />
+
+}@placeholder {
+<section class="section-loader">
+  <div id="loader"></div>
+</section>
+}@error {
+<section>
+  <h2>Ocorreu um erro no download do componente, tente novamente...</h2>
+</section>
+}

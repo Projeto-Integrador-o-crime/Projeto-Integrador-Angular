@@ -137,10 +137,12 @@
 
         cursor: pointer;
         transition: 0.2s;
+      }
 
-        &:hover {
-          // background: var(--primary-10);
-        }
+      .btn-submit[disabled] {
+        background-color: #ccc;
+        opacity: 0.6;
+        cursor: not-allowed;
       }
 
       .footer {

@@ -1,0 +1,64 @@
+<div class="main-container">
+  <div class="main-form-group">
+    <form [formGroup]="firstProductForm" (ngSubmit)="submit()" class="form-cadastro">
+      <a [routerLink]="['/dashboard']"><i class="bi bi-x-lg close"></i></a>
+      <div class="header">
+        <h1>Faça o cadastro do Produto<strong
+            style="background: linear-gradient(to right,#8459E8,#5271FF); -webkit-text-fill-color: transparent; -webkit-background-clip: text;">!</strong>
+        </h1>
+        <p>Cadastre os Pacotes para Venda.</p>
+      </div>
+  
+      <div class="top-area">
+        <label class="input">
+          Nome do Pacote:
+          <input type="text" placeholder="Nome completo do Pacote..." formControlName="name"
+            (blur)="validateData($event, 'nome')" />
+          @if (errorName !== '') {
+          <p class="error-msg">{{ errorName }}</p>
+          }
+        </label>
+        <label class="input" style="margin-left: 15px; width: 30%;">
+          Preço:
+          <input type="number" placeholder="R$ 50.90" formControlName="price" (blur)="validateData($event, 'preço')" />
+          @if (errorPrice !== '') {
+          <p class="error-msg">{{ errorPrice }}</p>
+          }
+        </label>
+      </div>
+      <label class="input">
+        Descrição:
+        <textarea name="descricao" id="descricao" placeholder="Coloque a Descrição do Pacote aqui..."
+          formControlName="description" (blur)="validateData($event, 'descrição')"></textarea>
+        @if (erroDescription !== '') {
+        <p class="error-msg">{{ erroDescription }}</p>
+        }
+      </label>
+      <button [disabled]="validateForm()" class="btn-submit"
+        style="background: linear-gradient(to right,#8459E8,#5271FF);">
+        Cadastrar produto
+      </button>
+      @if (isRegistered) {
+      <div class="error-msg-container">
+        <p class="not-error-msg">Produto Cadastrado com Sucesso!</p>
+      </div>
+      }
+    </form>
+  
+    <form [formGroup]="secordProductForm" [ngClass]="file ? 'form-not-file' : 'form-file'">
+      <strong>Imagem do Pacote</strong><br>
+      @if (!file){
+      <label class="input file-container">
+        <input type="file" (change)="getFile($event)" 
+          formControlName="productPicture" />
+          <span style="opacity: 69%;">Selecione sua Imagem Aqui!:</span><br>
+      </label>
+      } @else {
+      <label class="input file-container">
+        <strong>Imagem Selecionada:</strong> {{ validateNameFile() }} <br>
+      </label>
+      <button class="clean-file" (click)="cleanFile()" style="background: linear-gradient(to right,#8459E8,#5271FF);">Limpar Imagem</button>
+      }
+    </form>
+  </div>
+</div>

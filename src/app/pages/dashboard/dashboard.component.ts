@@ -3,40 +3,35 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterLink } from '@angular/router';
 import { TableComponent } from '../../components/table/table.component';
 import { DashboardMainComponent } from '../../components/dashboard-main/dashboard-main.component';
+import { TableProductsComponent } from '../../components/table-products/table-products.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatExpansionModule, RouterLink, TableComponent, DashboardMainComponent, RouterLink],
+  imports: [MatExpansionModule, RouterLink, TableComponent, TableProductsComponent, DashboardMainComponent, RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   panelOpenState = false;
-  isTableOpen = false;
+  isTableUserOpen = false;
+  isTableProductsOpen = false;
   isDashboardOpen = false
 
-  public openDashboard(){
-    if (this.isDashboardOpen) {
-      this.isDashboardOpen = false;
-    } else if (!this.isDashboardOpen) {
-      this.isDashboardOpen = true;
-    }
+  public openTable(params: string) {
+    switch (params) {
+      case 'tableUser':
+        this.isTableUserOpen = true;
+        this.isTableProductsOpen = false;
+        break;
 
-    if (this.isTableOpen) {
-      this.isTableOpen = false;
-    }
-  }
+      case 'tableProducts':
+        this.isTableProductsOpen = true;
+        this.isTableUserOpen = false;
+        break;
 
-  public openTable() {
-    if (this.isTableOpen) {
-      this.isTableOpen = false;
-    } else if (!this.isTableOpen) {
-      this.isTableOpen = true;
-    }
-
-    if (this.isDashboardOpen) {
-      this.isDashboardOpen = false;
+      default:
+        break;
     }
   }
 

@@ -1,45 +1,44 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ApiService } from '../../services/api.service';
-import { ITableUsers } from '../../interfaces/ITableUsers';
-
+import { ITableProducts } from '../../interfaces/ITableProducts';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-table',
+  selector: 'app-table-products',
   standalone: true,
   imports: [MatTableModule, MatInputModule, MatFormFieldModule],
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.scss',
+  templateUrl: './table-products.component.html',
+  styleUrl: './table-products.component.scss'
 })
-export class TableComponent {
+export class TableProductsComponent {
   displayedColumns: string[] = [
     'position',
     'id',
     'name',
-    'email',
-    'password',
-    'actions',
+    'description',
+    'price',
+    'actions'
   ];
-  dataSource = new MatTableDataSource<ITableUsers>();
+  dataSource = new MatTableDataSource<ITableProducts>();
 
   // API injeção
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.loadData();
   }
 
   loadData() {
-    this.apiService.httpListUser$().subscribe((res) => {
+    this.apiService.httpListProducts$().subscribe((res) => {
       this.dataSource.data = res.map((element, index) => ({
         position: index + 1,
         id: element.id,
         name: element.name,
-        email: element.email,
-        password: element.password,
+        description: element.description,
+        price: element.price,
       }));
     });
   }
@@ -52,15 +51,15 @@ export class TableComponent {
   deleteUser(id: string) {
     Swal.fire({
       title: 'Tem certeza disso?',
-      text: "Se um usuário for removido, os registros associados serão permanentemente excluídos!",
+      text: "Se um Pacote for removido, os registros associados serão permanentemente excluídos!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#0353a4',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, deletar usuário!',
+      confirmButtonText: 'Sim, deletar Pacote!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.apiService.httpDeleteUser$(id).subscribe((res) => {
+        this.apiService.httpDeleteProduct$(id).subscribe((res) => {
           this.loadData();
         });
       }

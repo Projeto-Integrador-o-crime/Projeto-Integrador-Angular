@@ -136,6 +136,12 @@
         }
       }
 
+      .btn-submit[disabled] {
+        background-color: #ccc;
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
       .footer {
         width: 100%;
         display: flex;
