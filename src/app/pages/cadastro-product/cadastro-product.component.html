@@ -8,7 +8,7 @@
         </h1>
         <p>Cadastre os Pacotes para Venda.</p>
       </div>
-  
+
       <div class="top-area">
         <label class="input">
           Nome do Pacote:
@@ -38,26 +38,31 @@
         style="background: linear-gradient(to right,#8459E8,#5271FF);">
         Cadastrar produto
       </button>
+      @if (getCadastroProductError(); as error) {
+      <div class="error-msg-container">
+        <p class="error-msg">{{ error }}</p>
+      </div>
+      }
       @if (isRegistered) {
       <div class="error-msg-container">
         <p class="not-error-msg">Produto Cadastrado com Sucesso!</p>
       </div>
       }
     </form>
-  
-    <form [formGroup]="secordProductForm" [ngClass]="file ? 'form-not-file' : 'form-file'">
+
+    <form [formGroup]="secordProductForm" [ngClass]="fileInput ? 'form-not-file' : 'form-file'">
       <strong>Imagem do Pacote</strong><br>
-      @if (!file){
+      @if (!fileInput){
       <label class="input file-container">
-        <input type="file" (change)="getFile($event)" 
-          formControlName="productPicture" />
-          <span style="opacity: 69%;">Selecione sua Imagem Aqui!:</span><br>
+        <input type="file" (change)="getFile($event)" formControlName="productPicture" />
+        <span style="opacity: 69%;">Selecione sua Imagem Aqui!:</span><br>
       </label>
       } @else {
       <label class="input file-container">
         <strong>Imagem Selecionada:</strong> {{ validateNameFile() }} <br>
       </label>
-      <button class="clean-file" (click)="cleanFile()" style="background: linear-gradient(to right,#8459E8,#5271FF);">Limpar Imagem</button>
+      <button class="clean-file" (click)="cleanFile()"
+        style="background: linear-gradient(to right,#8459E8,#5271FF);">Limpar Imagem</button>
       }
     </form>
   </div>

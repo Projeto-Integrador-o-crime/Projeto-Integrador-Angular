@@ -13,6 +13,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cadastro-product.component.scss'
 })
 export class CadastroProductComponent {
+  public apiKey: string = 'e8fd7ca6417479482154b280ab46d204';
+  public selectedImage: string | ArrayBuffer | null = null;
+  public selectedFile: File | null = null;
+
   public isRegistered: boolean = false;
   public isFileNull: any;
 
@@ -21,9 +25,9 @@ export class CadastroProductComponent {
   public erroDescription: string = '';
   public erroImage: string = '';
 
-  public file: any;
+  public fileInput: any;
 
-  public getCadastroProdutoError = this.apiService.getCadastroError;
+  public getCadastroProductError = this.apiService.getCadastroProductError;
 
   // API
   constructor(private apiService: ApiService) {
@@ -46,7 +50,7 @@ export class CadastroProductComponent {
   })
 
   public validateForm(){
-    return this.firstProductForm.valid && this.file ? false : true
+    return this.firstProductForm.valid && this.fileInput ? false : true
   }
 
   // Tratamento de erro Front
@@ -98,15 +102,29 @@ export class CadastroProductComponent {
 
   // Função para receber e visualizar o arquivo do usuário
   public getFile(event: any) {
-    this.file = event.target.files[0];
+    debugger
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      this.selectedFile = file;
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.selectedImage = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    
+    this.fileInput = event.target.files[0];
     this.secordProductForm.patchValue({
-      productPicture: this.file
+      productPicture: this.fileInput
     });
+
   }
 
   // Limpar o arquivo selecionado e resetar o controle productPicture
   public cleanFile() {
-    this.file = undefined;
+    this.fileInput = undefined;
     this.secordProductForm.patchValue({
       productPicture: ''
     });
@@ -116,7 +134,7 @@ export class CadastroProductComponent {
   public validateNameFile() {
     const maxLength = 20;
 
-    const fileName = this.file.name;
+    const fileName = this.fileInput.name;
     const fileExtension = fileName.split('.').pop();
     const fileNameWithoutExtension = fileName.substring(0, fileName.length - fileExtension.length - 1);
 
@@ -136,7 +154,7 @@ export class CadastroProductComponent {
         name: this.firstProductForm.get('name')?.value,
         price: this.firstProductForm.get('price')?.value,
         description: this.firstProductForm.get('description')?.value,
-        productPicture: this.file.name,
+        productPicture: this.selectedImage,
       };
 
       this.apiService.httpPostProducts$(body).subscribe((res) => {
