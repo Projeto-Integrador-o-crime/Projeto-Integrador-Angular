@@ -1,65 +1,85 @@
 <div class="container-main">
-  <div class="nav">
-    <div class="title">
-      <h1>Dashboard</h1>
-    </div>
-    <hr />
-    <div class="table-element">
-      <i class="bi bi-speedometer"></i>
-      <label class="icon-select"><strong>Dashboard</strong></label>
-    </div>
-    <hr />
-    <p class="subtitle">ADDONS</p>
-
-    <mat-accordion class="conteiner-element">
-      <mat-expansion-panel class="background" hideToggle>
-        <mat-expansion-panel-header class="conteiner-element">
-          <mat-panel-title class="title">
-            <i class="icon-select bi bi-folder-fill icon"></i>
-            <label class="icon-select">pages</label>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="elements">
-          <p>LOGIN SCREENS:</p>
-          <a [routerLink]="['/login']">Login</a>
-          <a [routerLink]="['/cadastro']">cadastro</a>
-
-          <hr />
-
-          <p>OTHER PAGES:</p>
-          <a [routerLink]="['/404']">404 Error</a>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <div class="table-element" (click)="openTable('tableUser')">
-      <i class="icon-select bi bi-table"></i>
-      <label class="icon-select"><strong>Tabela Usuários</strong></label>
-    </div>
-    <div class="table-element" (click)="openTable('tableProducts')">
-      <i class="icon-select bi bi-table"></i>
-      <label class="icon-select"><strong>Tabela Produtos</strong></label>
-    </div>
-  </div>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <header style="display: flex; justify-content: center; align-items: center;">
+        <h2 (click)="openTable('graficContent')">DashBoard</h2>
+      </header>
+      <mat-accordion>
+        <mat-expansion-panel class="main-header-painel" (opened)="panelOpenState.set(true)"
+          (closed)="panelOpenState.set(false)">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title-painel"> Áreas Sistema </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Cadastros Gerais:</p>
+          <div class="description">
+            <a [routerLink]="['/login']">Login Usuário</a>
+            <a [routerLink]="['/cadastro']">cadastro Usuário</a>
+            <a [routerLink]="['/cadastroProduct']">cadastro Produto</a>
+          </div>
+          <hr>
+          <p>Outros:</p>
+          <div class="description">
+            <a [routerLink]="['']">Página Principal</a>
+            <a [routerLink]="['/policyPolitics']">Politicas de Privacidade</a>
+            <a [routerLink]="['/TermsService']">Termos de Serviço</a>
+          </div>
+          <hr>
+          <p>Erros:</p>
+          <div class="description">
+            <a [routerLink]="['/404']">404 - Página não encontrada</a>
+            <a [routerLink]="['/login']">403.6 - Usuário já logado.</a>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="main-header-painel" (opened)="panelOpenState.set(true)"
+          (closed)="panelOpenState.set(false)">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title-painel"> Tabelas </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="table-element" (click)="openTable('tableUser')">
+            <i class="icon-select bi bi-table"></i>
+            <label class="icon-select"><strong>Tabela Usuários</strong></label>
+          </div>
+          <div class="table-element" (click)="openTable('tableProducts')">
+            <i class="icon-select bi bi-table"></i>
+            <label class="icon-select"><strong>Tabela Produtos</strong></label>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-drawer>
+  </mat-drawer-container>
 
   <div class="main-body">
     <div class="header">
       <div class="left-container">
         <div class="input">
-          <input type="text" placeholder="search for..."/>
-          <i class="icon bi bi-search"></i>
+          <input type="text" placeholder="search for..." />
+          <i style="background: linear-gradient(to right,#8459E8,#5271FF);" class="icon bi bi-search"></i>
         </div>
       </div>
       <div class="right-container">
         <i class="icon bi bi-envelope-fill"></i>
         <i class="icon bi bi-bell-fill"></i>
-
+        <i style="color: var(--b);" class="icon bi bi-list" (click)="drawer.toggle()"></i>
         <hr>
 
+        @if (!isLoggedIn){
         <a [routerLink]="['/login']" class="btn-login">
+          <i class="icon-user bi bi-person-fill-add"></i>
+        </a>
+        }
+
+        @if (isLoggedIn){
+        <a class="btn-login" [title]="nameUser">
           <i class="icon-user bi bi-person-fill"></i>
         </a>
+        }
       </div>
     </div>
+    @if (mainContentGrafic){
+    <div class="container-main-table">
+      <app-grafics-dashboard />
+    </div>
+    }
 
     @if (isTableUserOpen) {
     <div class="container-main-table">
