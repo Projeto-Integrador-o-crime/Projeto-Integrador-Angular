@@ -21,6 +21,8 @@ export class EditProfileComponent {
   nameUser: string = '';
   descricao: string = '';
   imageUrl = null;
+  
+  public fillPicture = this.selectedFile;
 
   // API
   constructor(private apiService: ApiService, private http: HttpClient) { }
@@ -66,15 +68,12 @@ export class EditProfileComponent {
     const id = this.idUser
 
     this.apiService.httpListByidUser$(id).subscribe((res) => {
-      if (res.length > 0) {
-        const userData = res[0];
-        this.profileEditForm.patchValue({
-          name: userData.name,
-          descricao: userData.description,
-          profilePicture: userData.profilePicture,
-        });
-        this.selectedImage = userData.profilePicture;
-      }
+      this.profileEditForm.patchValue({
+        name: res.name,
+        descricao: res.description,
+      });
+
+      this.selectedImage = res.profilePicture;
     });
   }
 

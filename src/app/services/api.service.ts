@@ -8,6 +8,7 @@ import { ICadastro } from '../interfaces/ICadastro';
 import { IEditUser } from '../interfaces/IEditUser';
 import { IProducts } from '../interfaces/IProducts';
 import { ICadastroProducts } from '../interfaces/ICadastroProducts';
+import { IUpdateProduct } from '../interfaces/IUpdateProduct';
 
 @Injectable({
   providedIn: 'root',
@@ -117,6 +118,22 @@ export class ApiService {
     return this.#http.get<IProducts[]>(this.#url() + `/products`);
   }
 
+  // Listar Dados do Produto Por Id (url)
+  #setListProductByIdError = signal<any | null>(null);
+  get setListProductByIdError() {
+    return this.#setListProductByIdError.asReadonly();
+  }
+  public httpListProductByidUser$(id: any): Observable<any> {
+    this.#setListProductByIdError.set(null);
+
+    return this.#http.get<any[]>(`${this.#url()}/product-data/${id}`).pipe(
+      catchError((e: HttpErrorResponse) => {
+        this.#setListProductByIdError.set(e.error.message);
+        return throwError(() => e);
+      })
+    )
+  }
+
   // Cadastrar Produto
   #setCadastroProductError = signal<ICadastroProducts | null>(null);
   get getCadastroProductError() {
@@ -138,4 +155,20 @@ export class ApiService {
     const options = id ? { params: new HttpParams().set('id', id) } : {};
     return this.#http.delete<void>(`${this.#url()}/product-delete`, options);
   }
+
+   // Atualiza Dados do Produto
+   #setUpdateProductError = signal<IUpdateProduct | null>(null);
+   get getUpdateProductError() {
+     return this.#setUpdateProductError.asReadonly();
+   }
+   public httpUpdateProducts$(body: any): Observable<IUpdateProduct[]> {
+     this.#setUpdateProductError.set(null);
+ 
+     return this.#http.put<IUpdateProduct[]>(this.#url() + `/product/updated`, body).pipe(
+       catchError((e: HttpErrorResponse) => {
+         this.#setUpdateProductError.set(e.error.message);
+         return throwError(() => e);
+       })
+     )
+   }
 }

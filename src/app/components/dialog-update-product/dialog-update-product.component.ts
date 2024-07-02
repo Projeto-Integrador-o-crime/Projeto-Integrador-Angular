@@ -1,18 +1,22 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-cadastro-product',
+  selector: 'app-dialog-update-product',
   standalone: true,
-  imports: [RouterLink, CommonModule, ReactiveFormsModule],
-  templateUrl: './cadastro-product.component.html',
-  styleUrl: './cadastro-product.component.scss'
+  imports: [MatDialogModule, MatButtonModule, RouterLink, CommonModule, ReactiveFormsModule],
+  templateUrl: './dialog-update-product.component.html',
+  styleUrl: './dialog-update-product.component.scss'
 })
-export class CadastroProductComponent {
+export class DialogUpdateProductComponent implements OnInit {
+  // Variáveis.
   public apiKey: string = 'e8fd7ca6417479482154b280ab46d204';
+  public idProduct: string | null = null;
   public selectedImage: string | ArrayBuffer | null = null;
   public selectedFile: File | null = null;
 
@@ -29,10 +33,16 @@ export class CadastroProductComponent {
   public getCadastroProductError = this.apiService.getCadastroProductError;
 
   // API
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, @Inject(MAT_DIALOG_DATA) public data: { id: string }) {
     this.secordProductForm = this.#fb.group({
       productPicture: ['']
     });
+  }
+
+  ngOnInit(): void {
+    this.idProduct = this.data.id;
+
+    this.fillsFields();
   }
 
   #fb = inject(FormBuilder);
@@ -48,8 +58,22 @@ export class CadastroProductComponent {
     productPicture: ['', [Validators.required]]
   })
 
-  public validateForm(){
+  public validateForm() {
     return this.firstProductForm.valid && this.fileInput ? false : true
+  }
+
+  // Pega Dados Para Preenchiemnto Automatico dos Campos.
+  public fillsFields() {
+    this.apiService.httpListProductByidUser$(this.idProduct).subscribe((res) => {
+      this.firstProductForm.patchValue({
+        name: res.name,
+        price: res.price,
+        description: res.description,
+      });
+      this.secordProductForm.patchValue({
+        productPicture: res.productPicture
+      })
+    });
   }
 
   // Tratamento de erro Front
@@ -112,7 +136,7 @@ export class CadastroProductComponent {
       };
       reader.readAsDataURL(file);
     }
-    
+
     this.fileInput = event.target.files[0];
     this.secordProductForm.patchValue({
       productPicture: this.fileInput
@@ -149,13 +173,14 @@ export class CadastroProductComponent {
 
     if (this.firstProductForm.valid && this.secordProductForm.valid) {
       const body = {
+        id: this.idProduct,
         name: this.firstProductForm.get('name')?.value,
         price: this.firstProductForm.get('price')?.value,
         description: this.firstProductForm.get('description')?.value,
         productPicture: this.selectedImage,
       };
 
-      this.apiService.httpPostProducts$(body).subscribe((res) => {
+      this.apiService.httpUpdateProducts$(body).subscribe((res) => {
         this.isRegistered = true;
       });
     }

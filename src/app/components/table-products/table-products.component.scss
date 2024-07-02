@@ -27,10 +27,19 @@
     }
   
     .icon-delete{
-      font-size: 22px;
+      font-size: 15px;
+      cursor: pointer;
   
       &:hover{
         color: var(--red);
+      }
+    }
+    .icon-update{
+      font-size: 15px;
+      cursor: pointer;
+
+      &:hover{
+        color: var(--green);
       }
     }
   }

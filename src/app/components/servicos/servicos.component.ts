@@ -18,7 +18,6 @@ export class ServicosComponent {
     const dialogRef = this.dialog.open(DialogBuyProductComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
